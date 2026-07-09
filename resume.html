@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aravindan Pathirasamy – Resume</title>
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 11pt; }
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.5;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px 36px;
+    }
+
+    /* ── Print toolbar (hidden in print) ── */
+    .print-toolbar {
+      background: #0969da;
+      color: #fff;
+      padding: 10px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .print-toolbar span { opacity: 0.9; }
+    .toolbar-btns { display: flex; gap: 0.5rem; }
+    .toolbar-btn {
+      background: #fff;
+      color: #0969da;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .toolbar-btn:hover { background: #e8f0fe; }
+    .toolbar-btn.back { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); }
+    .toolbar-btn.back:hover { background: rgba(255,255,255,0.1); }
+
+    /* ── Header ── */
+    .header { border-bottom: 2.5px solid #0969da; padding-bottom: 12px; margin-bottom: 14px; }
+    .header-name { font-size: 22pt; font-weight: 700; color: #0969da; letter-spacing: -0.3px; }
+    .header-title { font-size: 11.5pt; color: #444; font-weight: 600; margin-top: 2px; }
+    .header-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      margin-top: 7px;
+      font-size: 9.5pt;
+      color: #555;
+    }
+    .header-contact a { color: #0969da; text-decoration: none; }
+    .header-contact span::before { content: '• '; color: #aaa; }
+    .header-contact span:first-child::before { content: ''; }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 14px; }
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0969da;
+      border-bottom: 1px solid #cde;
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+    }
+
+    /* ── Summary ── */
+    .summary { font-size: 10pt; color: #333; }
+
+    /* ── Experience ── */
+    .job { margin-bottom: 11px; }
+    .job-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .job-role { font-size: 10.5pt; font-weight: 700; color: #111; }
+    .job-period { font-size: 9pt; color: #666; white-space: nowrap; flex-shrink: 0; }
+    .job-company { font-size: 9.5pt; color: #0969da; font-weight: 600; margin-bottom: 2px; }
+    .job-client { font-size: 9pt; color: #555; font-style: italic; margin-bottom: 4px; }
+    .job-bullets { margin-left: 14px; }
+    .job-bullets li { font-size: 9.5pt; color: #333; margin-bottom: 2px; list-style: disc; }
+    .job-tags { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px; }
+    .job-tags span {
+      font-size: 8pt;
+      background: #f0f4ff;
+      color: #0969da;
+      border: 1px solid #c8d8f8;
+      padding: 1px 7px;
+      border-radius: 3px;
+    }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 24px; }
+    .skill-row { font-size: 9.5pt; color: #333; }
+    .skill-row strong { color: #111; min-width: 130px; display: inline-block; }
+
+    /* ── Education ── */
+    .edu-item { display: flex; justify-content: space-between; align-items: baseline; }
+    .edu-degree { font-size: 10pt; font-weight: 700; color: #111; }
+    .edu-school { font-size: 9.5pt; color: #555; }
+    .edu-year { font-size: 9pt; color: #777; }
+
+    /* ── Accomplishments ── */
+    .acc-list { margin-left: 14px; }
+    .acc-list li { font-size: 9.5pt; color: #333; margin-bottom: 3px; list-style: disc; }
+
+    /* ── Projects ── */
+    .project { margin-bottom: 9px; }
+    .project-title { font-size: 10pt; font-weight: 700; color: #111; }
+    .project-desc { font-size: 9.5pt; color: #333; margin-top: 2px; }
+    .project-tech { font-size: 8.5pt; color: #0969da; margin-top: 3px; }
+
+    /* ── Print ── */
+    @media print {
+      .print-toolbar { display: none !important; }
+      html { font-size: 10.5pt; }
+      .page { padding: 18px 20px; max-width: 100%; }
+      body { background: #fff; }
+      a { color: #0969da !important; }
+      @page { margin: 14mm 12mm; size: A4; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Print toolbar -->
+<div class="print-toolbar" id="toolbar">
+  <span>📄 Aravindan Pathirasamy — Resume &nbsp;|&nbsp; Print or Save as PDF using Ctrl+P</span>
+  <div class="toolbar-btns">
+    <a href="index.html" class="toolbar-btn back">← Back to Portfolio</a>
+    <button class="toolbar-btn" onclick="window.print()">🖨 Print / Save PDF</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-name">Aravindan Pathirasamy</div>
+    <div class="header-title">Associate Technical Lead — Java · Spring Boot · Karaf · React · AI Platforms</div>
+    <div class="header-contact">
+      <span>Coimbatore, Tamil Nadu, India</span>
+      <span><a href="mailto:aravin012@gmail.com">aravin012@gmail.com</a></span>
+      <span>+91 86680 76545</span>
+      <span><a href="https://www.linkedin.com/in/aravindan-pathirasamy-b56708a7/" target="_blank">LinkedIn</a></span>
+      <span><a href="https://github.com/aravin012" target="_blank">github.com/aravin012</a></span>
+      <span><a href="https://aravin012.github.io" target="_blank">aravin012.github.io</a></span>
+    </div>
+  </header>
+
+  <!-- SUMMARY -->
+  <section class="section">
+    <div class="section-title">Professional Summary</div>
+    <p class="summary">
+      Associate Technical Lead with 9+ years of experience delivering enterprise Java applications across insurance,
+      fintech, and AI platform domains. Expert in Java, Spring Boot, Apache Karaf (OSGi), and React.
+      Led Spring MVC → Spring Boot + React migration for Indian Farm Bureau Insurance (TPP, eApp, iHub) at Zinnia.
+      Contributed to MinionBot — an AI platform using LLM agents, GraphRAG, and Neo4j knowledge graphs for
+      autonomous code generation. Proven track record in full-stack delivery, technical leadership, and legacy
+      modernisation. Open to on-site, hybrid, and remote roles.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row"><strong>Languages:</strong> Java 8–17, J2EE, JavaScript, SQL</div>
+      <div class="skill-row"><strong>Frameworks:</strong> Spring Boot, Spring MVC, Spring Security, React</div>
+      <div class="skill-row"><strong>OSGi / Middleware:</strong> Apache Karaf, OSGi Bundles</div>
+      <div class="skill-row"><strong>ORM / Data:</strong> Hibernate / JPA, Spring Data</div>
+      <div class="skill-row"><strong>Databases:</strong> MS SQL Server, Oracle DB, PostgreSQL, MongoDB</div>
+      <div class="skill-row"><strong>AI / LLM:</strong> LLM Integration, GraphRAG, Neo4j, Agentic Pipelines</div>
+      <div class="skill-row"><strong>Web Services:</strong> REST APIs, SOAP, XSLT, Axis2</div>
+      <div class="skill-row"><strong>Tools / DevOps:</strong> Git, Maven, Jenkins, Docker, JIRA, SonarQube</div>
+      <div class="skill-row"><strong>Testing:</strong> JUnit, Mockito, Postman, Swagger / OpenAPI</div>
+      <div class="skill-row"><strong>Auth / Security:</strong> Azure AD, OAuth2 / JWT, Spring Security</div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <div class="section-title">Work Experience</div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-role">Software Engineer III &amp; Associate Technical Lead</span>
+        <span class="job-period">Apr 2024 – Present</span>
+      </div>
+      <div class="job-company">Zinnia, Coimbatore</div>
+      <div class="job-client">Client: Indian Farm Bureau Insurance, USA</div>
+      <ul class="job-bullets">
+        <li>Leading Spring MVC → Spring Boot + React migration for TPP, eApp, and iHub insurance applications.</li>
+        <li>Promoted to Software Engineer III (Jul 2025) after delivering key module milestones on the platform.</li>
+        <li>Contributed to MinionBot — an AI platform using LLM agents, GraphRAG, and Neo4j for autonomous code generation.</li>
+        <li>Conduct code reviews, enforce coding standards, and mentor team members within the module.</li>
+      </ul>
+      <div class="job-tags">
+        <span>Java</span><span>Spring Boot</span><span>React</span><span>Karaf</span><span>OSGi</span><span>MS SQL</span><span>Neo4j</span><span>Azure AD</span>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-role">Module Lead</span>
+        <span class="job-period">Aug 2021 – Mar 2024 · 2 yrs 8 mos</span>
+      </div>
+      <div class="job-company">EbixCash, Coimbatore</div>
+      <ul class="job-bullets">
+        <li>Led development of fintech and insurance workflow modules, owning feature planning through to delivery.</li>
+        <li>Designed and implemented REST APIs consumed by downstream web and mobile clients.</li>
+        <li>Drove technical discussions, task allocation, and delivery tracking for a team of developers.</li>
+      </ul>
+      <div class="job-tags">
+        <span>Java</span><span>Spring Boot</span><span>REST APIs</span><span>MS SQL</span><span>Microservices</span>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-role">Programmer Analyst</span>
+        <span class="job-period">Jun 2019 – Aug 2021 · 2 yrs 3 mos</span>
+      </div>
+      <div class="job-company">Cognizant Technology Solutions, Coimbatore</div>
+      <div class="job-client">Client: Lincoln Financial Group, USA</div>
+      <ul class="job-bullets">
+        <li>Participated in requirements gathering and design development meetings for insurance platform features.</li>
+        <li>Wrote, modified, and maintained software documentation and specifications.</li>
+        <li>Troubleshot software issues using debugging processes; worked extensively with Java, Spring Boot, and MS SQL.</li>
+      </ul>
+      <div class="job-tags">
+        <span>Java</span><span>Spring Boot</span><span>Spring MVC</span><span>REST</span><span>MS SQL</span>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-role">Software Engineer</span>
+        <span class="job-period">May 2017 – Jun 2019 · 2 yrs 2 mos</span>
+      </div>
+      <div class="job-company">EBix Software Private Ltd, Coimbatore</div>
+      <ul class="job-bullets">
+        <li>Developed TPP for Desjardins, Canada — business development, enhancements, and bug fixes using JSP, Spring, Struts, JBoss, MS SQL.</li>
+        <li>Built TPP system interface for American Family Insurance, USA — XML to XSLT Request/Response mappings.</li>
+        <li>Collaborated with 20+ engineers in TPP Migration; supervised 2 staff members.</li>
+        <li>Awarded <strong>Best Employee of the Year 2020</strong>.</li>
+      </ul>
+      <div class="job-tags">
+        <span>Java</span><span>Spring</span><span>Struts</span><span>JSP</span><span>MS SQL</span><span>Oracle</span><span>XSLT</span>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-role">Web Developer</span>
+        <span class="job-period">Oct 2016 – Mar 2017 · 6 mos</span>
+      </div>
+      <div class="job-company">Proplus Logics, Coimbatore</div>
+      <ul class="job-bullets">
+        <li>Developed Dynamic Blog (selfiebooth.in, srleaders.in) and Selvavel website (selvavel.com) using PHP and MySQL.</li>
+        <li>Handled client requirements documentation, development, bug fixing, and enhancements.</li>
+      </ul>
+      <div class="job-tags"><span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">B.E. Mechatronics, Robotics &amp; Automation Engineering</div>
+        <div class="edu-school">SNS College of Technology, Coimbatore (Anna University)</div>
+      </div>
+      <div class="edu-year">2012 – 2016</div>
+    </div>
+  </section>
+
+  <!-- ACCOMPLISHMENTS -->
+  <section class="section">
+    <div class="section-title">Accomplishments</div>
+    <ul class="acc-list">
+      <li>Awarded <strong>Best Employee of the Year 2020</strong> at Cognizant for outstanding performance.</li>
+      <li>Collaborated with a team of 20+ engineers in the development and successful delivery of the TPP Migration.</li>
+      <li>Supervised and mentored team members, ensuring quality delivery across multiple projects.</li>
+      <li>Contributed to MinionBot — an enterprise AI code generation platform using LLM agents and GraphRAG at Zinnia.</li>
+    </ul>
+  </section>
+
+  <!-- KEY PROJECTS -->
+  <section class="section">
+    <div class="section-title">Key Projects</div>
+
+    <div class="project">
+      <div class="project-title">Spring MVC → Spring Boot + React Migration — Indian Farm Bureau Insurance (Zinnia)</div>
+      <div class="project-desc">Leading full-stack migration of TPP, eApp, and iHub insurance applications from legacy Spring MVC/JSP to Spring Boot REST APIs + React SPA. Module-level ownership covering architecture, delivery, and team mentoring.</div>
+      <div class="project-tech">Java · Spring Boot · React · Karaf · OSGi · MS SQL · REST APIs</div>
+    </div>
+
+    <div class="project">
+      <div class="project-title">MinionBot — AI-Powered Code Generation Platform (Zinnia)</div>
+      <div class="project-desc">Contributed to an enterprise AI platform that autonomously generates production code from requirements using LLM agents, GraphRAG, and Neo4j knowledge graphs. Java/Spring Boot WebFlux reactive backend with Azure AD authentication.</div>
+      <div class="project-tech">Java 17 · Spring Boot · WebFlux · Python · FastAPI · React · MongoDB · Neo4j · Azure AD</div>
+    </div>
+
+    <div class="project">
+      <div class="project-title">The Policy Processor (TPP) — Desjardins, Canada &amp; American Family Insurance, USA (EBix)</div>
+      <div class="project-desc">Insurance policy processing platform development and system interface integration. Handled XML→XSLT Request/Response mappings and led TPP Migration with a team of 20+.</div>
+      <div class="project-tech">Java · Spring · Struts · JSP · JBoss · MS SQL · Oracle · XSLT</div>
+    </div>
+
+    <div class="project">
+      <div class="project-title">Insurance Platform — Lincoln Financial Group, USA (Cognizant)</div>
+      <div class="project-desc">Programmer Analyst for a US insurance client — requirements gathering, design, development, and troubleshooting across the insurance platform.</div>
+      <div class="project-tech">Java · Spring Boot · Spring MVC · REST · MS SQL</div>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<script>
+  // Auto-trigger print if ?print=1 in URL
+  if (new URLSearchParams(window.location.search).get('print') === '1') {
+    window.addEventListener('load', () => setTimeout(() => window.print(), 500));
+  }
+</script>
+</body>
+</html>
