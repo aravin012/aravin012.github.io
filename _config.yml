@@ -1,0 +1,11 @@
+# GitHub Pages configuration
+title: "Aravindan P | Senior Software Engineer"
+description: "Portfolio and resume site for Aravindan P – 18+ years in enterprise Java, Spring Boot, and microservices."
+url: "https://aravin012.github.io"
+baseurl: ""
+theme: null   # using custom HTML/CSS, no Jekyll theme
+
+# Exclude development files
+exclude:
+  - README.md
+  - "*.sh"
