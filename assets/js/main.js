@@ -48,11 +48,11 @@ if (themeToggle) {
 
 // ── Typewriter effect ────────────────────────────────────────────
 const titles = [
-  'Senior Software Engineer',
-  'Java & Spring Boot Specialist',
-  'Microservices Architect',
-  'Enterprise Java Developer',
-  'Technical Lead',
+  'Software Engineer III @ Zinnia',
+  'Java & Spring Boot Developer',
+  'Apache Karaf / OSGi Specialist',
+  'React Frontend Developer',
+  'Module Lead',
 ];
 
 let titleIdx  = 0;

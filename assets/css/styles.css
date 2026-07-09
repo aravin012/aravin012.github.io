@@ -945,3 +945,14 @@ ol { list-style: none; }
   .section, .section-alt { padding: 1.5rem 0; }
   a[href]::after { content: " (" attr(href) ")"; font-size: 0.7rem; color: #555; }
 }
+
+/* ── Projects placeholder ────────────────────────────────────────── */
+.projects-placeholder {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 2rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  width: 100%;
+}
