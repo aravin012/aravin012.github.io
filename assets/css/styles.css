@@ -956,3 +956,56 @@ ol { list-style: none; }
   text-align: center;
   width: 100%;
 }
+
+/* ── Timeline client label ──────────────────────────────────────── */
+.timeline-client {
+  font-size: 0.82rem;
+  color: var(--accent-green);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Accomplishments ────────────────────────────────────────────── */
+.accomplishments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.accomplishment-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.accomplishment-card:hover {
+  border-color: var(--accent-orange);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.accomplishment-icon {
+  width: 52px; height: 52px;
+  background: rgba(210,153,34,0.12);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  color: var(--accent-orange);
+  margin: 0 auto 1rem;
+}
+.accomplishment-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.accomplishment-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
