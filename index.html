@@ -149,6 +149,7 @@
           <span class="skill-tag skill-expert">Java 8–17</span>
           <span class="skill-tag skill-expert">J2EE</span>
           <span class="skill-tag skill-strong">JavaScript</span>
+          <span class="skill-tag skill-strong">Python</span>
           <span class="skill-tag skill-strong">SQL</span>
           <span class="skill-tag skill-mid">HTML / CSS</span>
         </div>
@@ -161,6 +162,7 @@
           <span class="skill-tag skill-expert">Spring MVC</span>
           <span class="skill-tag skill-expert">Apache Karaf (OSGi)</span>
           <span class="skill-tag skill-strong">React</span>
+          <span class="skill-tag skill-strong">FastAPI</span>
           <span class="skill-tag skill-strong">Hibernate / JPA</span>
           <span class="skill-tag skill-strong">Spring Security</span>
           <span class="skill-tag skill-mid">JSP / JSTL</span>
@@ -196,6 +198,7 @@
           <span class="skill-tag skill-strong">Agentic Pipelines</span>
           <span class="skill-tag skill-strong">GraphRAG</span>
           <span class="skill-tag skill-strong">Neo4j Knowledge Graph</span>
+          <span class="skill-tag skill-strong">MCP (Model Context Protocol)</span>
           <span class="skill-tag skill-mid">OpenAI / Azure OpenAI</span>
           <span class="skill-tag skill-mid">Prompt Engineering</span>
         </div>
@@ -399,19 +402,21 @@
         <div class="project-card-header">
           <span class="project-badge">AI Platform</span>
         </div>
-        <h3 class="project-title">MinionBot &mdash; AI-Powered Code Generation Platform</h3>
+        <h3 class="project-title">MinionBot &mdash; AI-Powered Code Generation Platform <span style="font-size:0.8rem;color:var(--accent-green);font-weight:500;">(Platform Champion)</span></h3>
         <p class="project-desc">
-          Contributed to <strong>MinionBot</strong>, an enterprise AI platform built at Zinnia that autonomously
-          generates production-ready code from business requirements. The platform takes a task through
-          requirements → RFC generation → design planning → code execution → GitHub PR, with
-          human-in-the-loop approval checkpoints throughout.
+          Key contributor and platform champion for <strong>MinionBot</strong> — Zinnia's enterprise AI platform
+          that autonomously generates production-ready code from business requirements using LLM agents,
+          GraphRAG, and a Neo4j knowledge graph. MinionBot's core moat over generic tools like Cursor or
+          GitHub Copilot is its <strong>deep Zinnia domain knowledge</strong> — baked into 17 coding skill
+          libraries, insurance-specific MCP servers, and a continuously evolving codebase graph that
+          no off-the-shelf AI tool can replicate.
         </p>
         <ul class="project-highlights">
-          <li>Java 17 / Spring Boot 4 reactive backend (WebFlux) — API gateway with Azure AD JWT auth</li>
-          <li>Multi-service architecture: orchestrator, planner, code-generator, blueprint-generator, Mosaic AI copilot</li>
-          <li>Code generator runs 5 parallel LLM sub-agents with sandbox verification and multi-pass code review</li>
-          <li>Knowledge graph (Neo4j + MongoDB) powering GraphRAG memory across 17 coding skill libraries</li>
-          <li>Next.js + React UI with Cytoscape graph visualisation and SSE real-time execution streams</li>
+          <li>Multi-service architecture: orchestrator, planner, code-generator, Mosaic AI copilot, blueprint-generator</li>
+          <li>5 parallel LLM sub-agents with sandbox verification, multi-pass code review and auto-PR creation</li>
+          <li>Neo4j + MongoDB GraphRAG knowledge graph — domain-aware memory across 17 skill libraries</li>
+          <li>Java 17 / Spring Boot WebFlux reactive backend — Azure AD JWT auth, SSE real-time streams</li>
+          <li>Driving roadmap discussions: cross-system awareness (TPP + eApp + iHub), long-term platform ownership</li>
         </ul>
         <div class="project-tech">
           <span>Java 17</span><span>Spring Boot</span><span>WebFlux</span><span>Python</span><span>FastAPI</span><span>React</span><span>Next.js</span><span>MongoDB</span><span>Neo4j</span><span>Azure AD</span><span>Docker</span>
@@ -489,27 +494,23 @@
         </div>
       </article>
 
-      <article class="project-card" data-animate aria-label="Dynamic Blog project">
-        <div class="project-card-header"></div>
-        <h3 class="project-title">Dynamic Blog Platform</h3>
-        <p class="project-desc">
-          Web application developed at ProPlus Logics for client blogs — selfiebooth.in and srleaders.in/updates.
-          Handled development, bug fixing, enhancements and client requirements documentation.
-        </p>
-        <div class="project-tech">
-          <span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span>
+      <article class="project-card" data-animate aria-label="ModernEapp AI Indexer project">
+        <div class="project-card-header">
+          <span class="project-badge">AI / R&amp;D</span>
         </div>
-      </article>
-
-      <article class="project-card" data-animate aria-label="Selvavel website project">
-        <div class="project-card-header"></div>
-        <h3 class="project-title">Selvavel Website</h3>
+        <h3 class="project-title">ModernEapp AI Indexer &amp; Neo4j Graph RAG Chatbot</h3>
         <p class="project-desc">
-          Client website for Selvavel Jothidar, Coimbatore (selvavel.com). A static web page with content
-          display, user-client chat interface and background audio playback functionality.
+          Built an AI indexer for the eApp insurance codebase that extracts classes, methods, business rules,
+          and DB schemas into a <strong>Neo4j knowledge graph</strong>. Developed a <strong>Graph RAG chatbot</strong>
+          with <strong>MCP integration</strong> for contextual code Q&amp;A and generation.
         </p>
+        <ul class="project-highlights">
+          <li>Automated codebase indexing into Neo4j graph nodes &amp; relationships</li>
+          <li>Graph RAG retrieval for context-aware AI responses</li>
+          <li>MCP server enabling IDE-integrated chatbot queries</li>
+        </ul>
         <div class="project-tech">
-          <span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+          <span>Python</span><span>Neo4j</span><span>Graph RAG</span><span>MCP</span><span>LLM</span><span>FastAPI</span>
         </div>
       </article>
 
@@ -529,6 +530,11 @@
         <div class="accomplishment-icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></div>
         <h3>Best Employee of the Year</h3>
         <p>Awarded Best Employee of the Year 2020 at Cognizant for outstanding performance and contribution.</p>
+      </div>
+      <div class="accomplishment-card" data-animate>
+        <div class="accomplishment-icon"><i class="fa-solid fa-award" aria-hidden="true"></i></div>
+        <h3>Values in Action — MinionBot</h3>
+        <p>Received Values in Action award at Zinnia for contributions to the MinionBot AI platform.</p>
       </div>
       <div class="accomplishment-card" data-animate>
         <div class="accomplishment-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
