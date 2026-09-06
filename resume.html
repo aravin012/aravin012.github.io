@@ -209,7 +209,7 @@
         <li>Leading Spring MVC → Spring Boot + React migration for TPP, eApp, and iHub insurance applications.</li>
         <li>Promoted to Software Engineer III (Jul 2025) after delivering key module milestones on the platform.</li>
         <li>Contributed to MinionBot — an AI platform using LLM agents, GraphRAG, and Neo4j for autonomous code generation.</li>
-        <li>Built a production RAG chat system for eApp — pgvector semantic search, area-guided Neo4j Cypher iteration, and gpt-4o reranking achieving 10/10 accuracy on insurance domain questions.</li>
+        <li>Built a production RAG chat system for eApp — pgvector semantic search, area-guided Neo4j Cypher iteration, and gpt-4o reranking for grounded, hallucination-free insurance domain Q&amp;A.</li>
         <li>Conduct code reviews, enforce coding standards, and mentor team members within the module.</li>
       </ul>
       <div class="job-tags">
@@ -344,11 +344,11 @@
       <div class="project-desc">
         Built a production-grade AI indexer for the eApp insurance codebase (38+ Maven modules) that extracts
         Java classes, business rules, DB schemas, and UI logic into a Neo4j knowledge graph (56K+ nodes, 313K+ edges).
-        Designed and implemented a full RAG (Retrieval-Augmented Generation) chat pipeline with:
-        3-pass hybrid retrieval (pgvector semantic search + Neo4j full-text indexes + area-guided Cypher iteration),
-        gpt-4o-mini cross-encoder reranking, and constrained gpt-4o synthesis — achieving 10/10 accuracy on a
-        diverse set of insurance domain questions. Fully generic architecture: works for any project indexed into
-        the same graph schema without domain-specific fine-tuning.
+        Designed and implemented a full RAG chat pipeline with 3-pass hybrid retrieval — pgvector semantic search,
+        Neo4j full-text indexes, and area-guided Cypher iteration (bk_by_source, db_columns, form_fields,
+        plan_link, lookup_codes, class_methods) — combined with gpt-4o-mini cross-encoder reranking and constrained
+        gpt-4o synthesis. Fully generic architecture: works for any project indexed into the same graph schema
+        without domain-specific fine-tuning.
       </div>
       <div class="project-tech">Python · FastAPI · Neo4j · pgvector · PostgreSQL · OpenAI (gpt-4o, text-embedding-3-small) · GraphRAG · MCP</div>
     </div>
