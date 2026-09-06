@@ -106,9 +106,9 @@
     }
 
     /* ── Skills ── */
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 24px; }
-    .skill-row { font-size: 9.5pt; color: #333; }
-    .skill-row strong { color: #111; min-width: 130px; display: inline-block; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
+    .skill-row { font-size: 9.5pt; color: #333; display: flex; }
+    .skill-row strong { color: #111; min-width: 110px; flex-shrink: 0; }
 
     /* ── Education ── */
     .edu-item { display: flex; justify-content: space-between; align-items: baseline; }
@@ -183,14 +183,14 @@
     <div class="skills-grid">
       <div class="skill-row"><strong>Languages:</strong> Java 8–17, J2EE, JavaScript, Python, SQL</div>
       <div class="skill-row"><strong>Frameworks:</strong> Spring Boot, Spring MVC, Spring Security, React, FastAPI</div>
-      <div class="skill-row"><strong>OSGi / Middleware:</strong> Apache Karaf, OSGi Bundles</div>
+      <div class="skill-row"><strong>OSGi:</strong> Apache Karaf, OSGi Bundles</div>
       <div class="skill-row"><strong>ORM / Data:</strong> Hibernate / JPA, Spring Data</div>
-      <div class="skill-row"><strong>Databases:</strong> MS SQL Server, Oracle DB, PostgreSQL, pgvector, MongoDB, Neo4j</div>
-      <div class="skill-row"><strong>AI / LLM:</strong> LLM Integration, GraphRAG, Neo4j, pgvector, RAG Pipelines, MCP, Agentic Pipelines</div>
-      <div class="skill-row"><strong>Web Services:</strong> REST APIs, SOAP, XSLT, Axis2</div>
-      <div class="skill-row"><strong>Tools / DevOps:</strong> Git, Maven, Jenkins, Docker, JIRA, SonarQube</div>
+      <div class="skill-row"><strong>Databases:</strong> MS SQL Server, Oracle, PostgreSQL, MongoDB, Neo4j</div>
+      <div class="skill-row"><strong>AI / LLM:</strong> LLM Integration, GraphRAG, RAG Pipelines, MCP</div>
+      <div class="skill-row"><strong>Web Services:</strong> REST APIs, SOAP, XSLT</div>
+      <div class="skill-row"><strong>Tools:</strong> Git, Maven, Jenkins, Docker, JIRA, SonarQube</div>
       <div class="skill-row"><strong>Testing:</strong> JUnit, Mockito, Postman, Swagger / OpenAPI</div>
-      <div class="skill-row"><strong>Auth / Security:</strong> Azure AD, OAuth2 / JWT, Spring Security</div>
+      <div class="skill-row"><strong>Auth:</strong> Azure AD, OAuth2 / JWT, Spring Security</div>
     </div>
   </section>
 
