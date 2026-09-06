@@ -185,8 +185,8 @@
       <div class="skill-row"><strong>Frameworks:</strong> Spring Boot, Spring MVC, Spring Security, React, FastAPI</div>
       <div class="skill-row"><strong>OSGi / Middleware:</strong> Apache Karaf, OSGi Bundles</div>
       <div class="skill-row"><strong>ORM / Data:</strong> Hibernate / JPA, Spring Data</div>
-      <div class="skill-row"><strong>Databases:</strong> MS SQL Server, Oracle DB, PostgreSQL, MongoDB</div>
-      <div class="skill-row"><strong>AI / LLM:</strong> LLM Integration, GraphRAG, Neo4j, MCP, Agentic Pipelines</div>
+      <div class="skill-row"><strong>Databases:</strong> MS SQL Server, Oracle DB, PostgreSQL, pgvector, MongoDB, Neo4j</div>
+      <div class="skill-row"><strong>AI / LLM:</strong> LLM Integration, GraphRAG, Neo4j, pgvector, RAG Pipelines, MCP, Agentic Pipelines</div>
       <div class="skill-row"><strong>Web Services:</strong> REST APIs, SOAP, XSLT, Axis2</div>
       <div class="skill-row"><strong>Tools / DevOps:</strong> Git, Maven, Jenkins, Docker, JIRA, SonarQube</div>
       <div class="skill-row"><strong>Testing:</strong> JUnit, Mockito, Postman, Swagger / OpenAPI</div>
@@ -209,6 +209,7 @@
         <li>Leading Spring MVC → Spring Boot + React migration for TPP, eApp, and iHub insurance applications.</li>
         <li>Promoted to Software Engineer III (Jul 2025) after delivering key module milestones on the platform.</li>
         <li>Contributed to MinionBot — an AI platform using LLM agents, GraphRAG, and Neo4j for autonomous code generation.</li>
+        <li>Built a production RAG chat system for eApp — pgvector semantic search, area-guided Neo4j Cypher iteration, and gpt-4o reranking achieving 10/10 accuracy on insurance domain questions.</li>
         <li>Conduct code reviews, enforce coding standards, and mentor team members within the module.</li>
       </ul>
       <div class="job-tags">
@@ -339,9 +340,17 @@
     </div>
 
     <div class="project">
-      <div class="project-title">ModernEapp AI Indexer &amp; Neo4j Graph RAG Chatbot (Personal / R&amp;D)</div>
-      <div class="project-desc">Built an AI indexer for the eApp insurance codebase — extracts classes, methods, business rules, and DB schemas into a Neo4j knowledge graph. Developed a Graph RAG chatbot with MCP integration for contextual code Q&amp;A and generation.</div>
-      <div class="project-tech">Python · Neo4j · Graph RAG · MCP · LLM · FastAPI</div>
+      <div class="project-title">ModernEapp AI Indexer &amp; RAG Chat System — github.com/aravin012/ai-indexer (Personal / R&amp;D)</div>
+      <div class="project-desc">
+        Built a production-grade AI indexer for the eApp insurance codebase (38+ Maven modules) that extracts
+        Java classes, business rules, DB schemas, and UI logic into a Neo4j knowledge graph (56K+ nodes, 313K+ edges).
+        Designed and implemented a full RAG (Retrieval-Augmented Generation) chat pipeline with:
+        3-pass hybrid retrieval (pgvector semantic search + Neo4j full-text indexes + area-guided Cypher iteration),
+        gpt-4o-mini cross-encoder reranking, and constrained gpt-4o synthesis — achieving 10/10 accuracy on a
+        diverse set of insurance domain questions. Fully generic architecture: works for any project indexed into
+        the same graph schema without domain-specific fine-tuning.
+      </div>
+      <div class="project-tech">Python · FastAPI · Neo4j · pgvector · PostgreSQL · OpenAI (gpt-4o, text-embedding-3-small) · GraphRAG · MCP</div>
     </div>
   </section>
 
