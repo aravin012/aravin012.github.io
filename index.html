@@ -407,23 +407,42 @@
           Key contributor and platform champion for <strong>MinionBot</strong> — Zinnia's enterprise AI platform
           that autonomously generates production-ready code from business requirements using LLM agents,
           GraphRAG, and a Neo4j knowledge graph. MinionBot's core moat over generic tools like Cursor or
-          GitHub Copilot is its <strong>deep Zinnia domain knowledge</strong> — baked into 17 coding skill
-          libraries, insurance-specific MCP servers, and a continuously evolving codebase graph that
-          no off-the-shelf AI tool can replicate.
+          GitHub Copilot is its <strong>deep Zinnia domain knowledge</strong> — baked into coding skill
+          libraries, insurance-specific MCP servers, and a continuously evolving codebase graph.
         </p>
         <ul class="project-highlights">
-          <li>Multi-service architecture: orchestrator, planner, code-generator, Mosaic AI copilot, blueprint-generator</li>
-          <li>5 parallel LLM sub-agents with sandbox verification, multi-pass code review and auto-PR creation</li>
-          <li>Neo4j + MongoDB GraphRAG knowledge graph — domain-aware memory across 17 skill libraries</li>
-          <li>Java 17 / Spring Boot WebFlux reactive backend — Azure AD JWT auth, SSE real-time streams</li>
-          <li>Driving roadmap discussions: cross-system awareness (TPP + eApp + iHub), long-term platform ownership</li>
+          <li>Multi-service architecture: orchestrator, planner, code-generator, Mosaic AI copilot</li>
+          <li>Parallel LLM sub-agents with sandbox verification and auto-PR creation</li>
+          <li>Neo4j + MongoDB GraphRAG knowledge graph with domain-aware memory</li>
+          <li>Java 17 / Spring Boot WebFlux reactive backend with Azure AD auth</li>
         </ul>
         <div class="project-tech">
-          <span>Java 17</span><span>Spring Boot</span><span>WebFlux</span><span>Python</span><span>FastAPI</span><span>React</span><span>Next.js</span><span>MongoDB</span><span>Neo4j</span><span>Azure AD</span><span>Docker</span>
+          <span>Java 17</span><span>Spring Boot</span><span>WebFlux</span><span>Python</span><span>FastAPI</span><span>React</span><span>MongoDB</span><span>Neo4j</span><span>Azure AD</span>
         </div>
       </article>
 
-      <article class="project-card featured" data-animate aria-label="TPP Desjardins project">
+      <article class="project-card featured" data-animate aria-label="ModernEapp AI Indexer project">
+        <div class="project-card-header">
+          <span class="project-badge">AI / R&amp;D</span>
+        </div>
+        <h3 class="project-title">ModernEapp AI Indexer &amp; RAG Chat System</h3>
+        <p class="project-desc">
+          Built an AI indexer for the eApp insurance codebase that extracts Java classes, business rules,
+          DB schemas, and UI logic into a <strong>Neo4j knowledge graph</strong>. Implemented a hybrid
+          <strong>RAG chat pipeline</strong> with pgvector semantic search, Neo4j graph traversal, cross-encoder
+          reranking, and LLM synthesis.
+        </p>
+        <ul class="project-highlights">
+          <li>Automated codebase indexing into Neo4j graph nodes &amp; relationships</li>
+          <li>Hybrid RAG retrieval: pgvector + Neo4j + cross-encoder reranking</li>
+          <li>Integrated into eApp for contextual code Q&amp;A</li>
+        </ul>
+        <div class="project-tech">
+          <span>Python</span><span>FastAPI</span><span>Neo4j</span><span>pgvector</span><span>PostgreSQL</span><span>OpenAI</span>
+        </div>
+      </article>
+
+      <article class="project-card featured" data-animate aria-label="Spring Boot Migration project">
         <div class="project-card-header">
           <span class="project-badge">Featured</span>
         </div>
@@ -431,8 +450,7 @@
         <p class="project-desc">
           Leading the modernisation of <strong>TPP, eApp and iHub</strong> insurance applications for
           Indian Farm Bureau Insurance at Zinnia. Migrating the full stack from legacy Spring MVC / JSP
-          to a modern <strong>Spring Boot REST API + React SPA</strong> architecture, improving maintainability,
-          performance and developer experience.
+          to a modern <strong>Spring Boot REST API + React SPA</strong> architecture.
         </p>
         <ul class="project-highlights">
           <li>Full-stack migration: Spring MVC → Spring Boot + React</li>
@@ -451,8 +469,7 @@
         <h3 class="project-title">The Policy Processor (TPP) &mdash; Desjardins</h3>
         <p class="project-desc">
           Insurance policy processing platform for <strong>Desjardins, Canada</strong> built at EBix.
-          Involved in business development items, feature enhancements, bug fixes, and technical triage support
-          for a large-scale insurance platform serving Canadian market clients.
+          Involved in business development items, feature enhancements, bug fixes, and technical triage support.
         </p>
         <ul class="project-highlights">
           <li>Collaborated with team of 20+ on TPP Migration</li>
@@ -460,58 +477,39 @@
           <li>Awarded Best Employee of the Year 2020</li>
         </ul>
         <div class="project-tech">
-          <span>Java</span><span>JSP</span><span>Spring</span><span>Struts</span><span>Ajax</span><span>JBoss</span><span>MS SQL</span>
+          <span>Java</span><span>JSP</span><span>Spring</span><span>Struts</span><span>JBoss</span><span>MS SQL</span>
         </div>
       </article>
 
       <article class="project-card" data-animate aria-label="TPP American Family Insurance project">
-        <div class="project-card-header"></div>
-        <h3 class="project-title">The Policy Processor (TPP) &mdash; American Family Insurance</h3>
+        <div class="project-card-header">
+          <span class="project-badge" style="color:var(--accent-green);background:rgba(63,185,80,0.12);border-color:var(--accent-green);">Insurance</span>
+        </div>
+        <h3 class="project-title">TPP &mdash; American Family Insurance</h3>
         <p class="project-desc">
           System interface development for <strong>American Family Insurance, USA</strong> at EBix.
-          Handled system interface items and created XML to XSLT mappings for Request/Response processing
-          between insurance platform components.
+          Created XML to XSLT mappings for Request/Response processing between platform components.
         </p>
         <ul class="project-highlights">
-          <li>XML &rarr; XSLT mapping for Request &amp; Response</li>
+          <li>XML → XSLT mapping for Request &amp; Response</li>
           <li>System interface design and integration</li>
         </ul>
         <div class="project-tech">
-          <span>Java</span><span>JSP</span><span>Servlets</span><span>Struts</span><span>Oracle</span><span>XSLT</span><span>JBoss</span>
+          <span>Java</span><span>JSP</span><span>Struts</span><span>Oracle</span><span>XSLT</span><span>JBoss</span>
         </div>
       </article>
 
       <article class="project-card" data-animate aria-label="Lincoln Financial Group project">
-        <div class="project-card-header"></div>
+        <div class="project-card-header">
+          <span class="project-badge" style="color:var(--accent-green);background:rgba(63,185,80,0.12);border-color:var(--accent-green);">Insurance</span>
+        </div>
         <h3 class="project-title">Insurance Platform &mdash; Lincoln Financial Group</h3>
         <p class="project-desc">
           Worked as Programmer Analyst at Cognizant for <strong>Lincoln Financial Group, USA</strong>.
-          Participated in requirements gathering, design meetings, software documentation and
-          troubleshooting complex issues across the insurance platform.
+          Requirements gathering, design meetings, and troubleshooting across the insurance platform.
         </p>
         <div class="project-tech">
           <span>Java</span><span>Spring Boot</span><span>Spring MVC</span><span>REST</span><span>MS SQL</span>
-        </div>
-      </article>
-
-      <article class="project-card" data-animate aria-label="ModernEapp AI Indexer project">
-        <div class="project-card-header">
-          <span class="project-badge">AI / R&amp;D</span>
-        </div>
-        <h3 class="project-title">ModernEapp AI Indexer &amp; RAG Chat System</h3>
-        <p class="project-desc">
-          Built an AI indexer for the eApp insurance codebase that extracts Java classes, business rules,
-          DB schemas, and UI logic into a <strong>Neo4j knowledge graph</strong>. Implemented a hybrid
-          <strong>RAG chat pipeline</strong> with pgvector semantic search, Neo4j graph traversal, cross-encoder
-          reranking, and LLM synthesis.
-        </p>
-        <ul class="project-highlights">
-          <li>Automated codebase indexing into Neo4j graph nodes &amp; relationships</li>
-          <li>Hybrid RAG retrieval: pgvector + Neo4j + cross-encoder reranking</li>
-          <li>Integrated into eApp for contextual code Q&amp;A</li>
-        </ul>
-        <div class="project-tech">
-          <span>Python</span><span>FastAPI</span><span>Neo4j</span><span>pgvector</span><span>PostgreSQL</span><span>OpenAI</span>
         </div>
       </article>
 
