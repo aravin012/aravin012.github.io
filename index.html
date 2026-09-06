@@ -502,16 +502,16 @@
         <p class="project-desc">
           Built an AI indexer for the eApp insurance codebase that extracts Java classes, business rules,
           DB schemas, and UI logic into a <strong>Neo4j knowledge graph</strong>. Implemented a hybrid
-          <strong>RAG chat pipeline</strong> with pgvector semantic search, Neo4j graph traversal, and LLM
-          reranking — exposed via <strong>MCP</strong> for IDE-integrated Q&amp;A.
+          <strong>RAG chat pipeline</strong> with pgvector semantic search, Neo4j graph traversal, cross-encoder
+          reranking, and LLM synthesis.
         </p>
         <ul class="project-highlights">
           <li>Automated codebase indexing into Neo4j graph nodes &amp; relationships</li>
           <li>Hybrid RAG retrieval: pgvector + Neo4j + cross-encoder reranking</li>
-          <li>MCP server enabling IDE-integrated chatbot queries</li>
+          <li>Integrated into eApp for contextual code Q&amp;A</li>
         </ul>
         <div class="project-tech">
-          <span>Python</span><span>FastAPI</span><span>Neo4j</span><span>pgvector</span><span>PostgreSQL</span><span>OpenAI</span><span>MCP</span>
+          <span>Python</span><span>FastAPI</span><span>Neo4j</span><span>pgvector</span><span>PostgreSQL</span><span>OpenAI</span>
         </div>
       </article>
 
