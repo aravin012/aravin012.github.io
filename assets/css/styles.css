@@ -709,10 +709,12 @@ ol { list-style: none; }
 /* ── Projects ───────────────────────────────────────────────────── */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
 }
 .project-card {
+  min-width: 0;
+  min-height: 330px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -727,10 +729,10 @@ ol { list-style: none; }
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
 }
-.project-card.featured {
+.project-card--lead {
   border-color: var(--accent);
-  grid-column: span 2;
-  background: linear-gradient(135deg, var(--bg-card), var(--bg-surface2));
+  border-left: 4px solid var(--accent);
+  background: linear-gradient(115deg, var(--bg-card), var(--bg-surface2));
 }
 
 .project-card-header {
@@ -750,6 +752,16 @@ ol { list-style: none; }
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+.project-badge--lead {
+  color: var(--accent);
+  background: var(--accent-glow);
+  border-color: var(--accent);
+}
+.project-badge--insurance {
+  color: var(--accent-green);
+  background: rgba(63, 185, 80, 0.1);
+  border-color: var(--accent-green);
+}
 .project-links { display: flex; gap: 0.5rem; }
 .project-links a {
   color: var(--text-muted);
@@ -760,7 +772,9 @@ ol { list-style: none; }
 .project-links a:hover { color: var(--accent); }
 
 .project-title {
-  font-size: 1rem;
+  min-height: 2.7em;
+  font-size: 1.05rem;
+  line-height: 1.35;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -927,7 +941,9 @@ ol { list-style: none; }
   .timeline-header { flex-direction: column; }
   .timeline-period { align-self: flex-start; }
 
-  .project-card.featured { grid-column: span 1; }
+  .project-card { min-height: 0; }
+  .project-title { min-height: 0; }
+  .projects-grid { grid-template-columns: 1fr; }
 
   .contact-links { grid-template-columns: 1fr; }
 }
@@ -935,7 +951,6 @@ ol { list-style: none; }
 @media (max-width: 480px) {
   .hero-stats { gap: 1.5rem; }
   .edu-grid { grid-template-columns: 1fr; }
-  .projects-grid { grid-template-columns: 1fr; }
 }
 
 /* ── Print ──────────────────────────────────────────────────────── */

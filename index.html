@@ -57,11 +57,11 @@
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Get in Touch</a>
       <a href="#experience" class="btn btn-outline">View Experience</a>
-      <a href="resume.html" target="_blank" class="btn btn-ghost" aria-label="View single page resume">
-        <i class="fa-solid fa-file-lines" aria-hidden="true"></i> Resume
+      <a href="resume.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" aria-label="Choose a resume or cover letter and export as PDF or Word">
+        <i class="fa-solid fa-file-lines" aria-hidden="true"></i> Resume &amp; Letter
       </a>
-      <a href="resume.html?print=1" target="_blank" class="btn btn-ghost" aria-label="Download resume as PDF">
-        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download PDF
+      <a href="resume.html?format=one&amp;print=1" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" aria-label="Print one-page resume as PDF">
+        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> One-page PDF
       </a>
     </div>
     <div class="hero-stats" role="list" aria-label="Career highlights">
@@ -108,8 +108,8 @@
         <p>
           At Zinnia I lead the Spring MVC → Spring Boot + React migration for insurance applications
           (TPP, eApp, iHub) for Indian Farm Bureau Insurance, contributed to <strong>MinionBot</strong>,
-          and built a <strong>multi-agent migration framework</strong> with 19 specialized AI agents
-          for evidence-checked legacy-to-modern codebase migrations. Passionate about applying AI to
+          and built a <strong>governed multi-agent engineering framework</strong> for evidence-checked
+          modernization, bug fixes, and feature delivery. Passionate about applying AI to
           accelerate software delivery.
         </p>
         <div class="about-pills">
@@ -259,7 +259,7 @@
           <ul class="timeline-bullets">
             <li>Supporting <strong>TPP</strong>, <strong>eApp</strong> and <strong>iHub</strong> insurance applications for Indian Farm Bureau Insurance.</li>
             <li>Leading migration of the platform from <strong>Spring MVC to Spring Boot with React</strong> — modernizing the full stack from legacy JSP/MVC to a modern REST + SPA architecture.</li>
-            <li>Built a <strong>multi-agent migration framework</strong> with 19 specialized AI agents for evidence-checked legacy-to-modern codebase migrations.</li>
+            <li>Built a <strong>governed multi-agent engineering framework</strong> for legacy modernization and in-place changes, with controller-run validation, build/test gates, and an audit trail.</li>
             <li>Promoted to Software Engineer III (Jul 2025) after delivering key module milestones on the insurance platform.</li>
             <li>Conduct code reviews, enforce coding standards, and mentor junior team members within the module.</li>
           </ul>
@@ -372,141 +372,114 @@
     <div class="section-header">
       <span class="section-tag">05 / Projects</span>
       <h2 class="section-title" id="projects-heading">Key Projects</h2>
-      <p class="section-sub">More projects coming soon.</p>
+      <p class="section-sub">Selected work in governed AI engineering, enterprise modernization, and insurance platforms.</p>
     </div>
     <div class="projects-grid" id="projectsGrid">
 
-      <article class="project-card featured" data-animate aria-label="MinionBot AI platform project">
+      <article class="project-card project-card--lead" data-animate aria-label="Governed multi-agent engineering framework project">
         <div class="project-card-header">
-          <span class="project-badge">AI Platform</span>
+          <span class="project-badge project-badge--lead">Principal project</span>
         </div>
-        <h3 class="project-title">MinionBot &mdash; AI-Powered Code Generation Platform <span style="font-size:0.8rem;color:var(--accent-green);font-weight:500;">(Platform Champion)</span></h3>
+        <h3 class="project-title">Governed Multi-Agent Engineering Framework</h3>
         <p class="project-desc">
-          Key contributor and platform champion for <strong>MinionBot</strong> — Zinnia's enterprise AI platform
-          that autonomously generates production-ready code from business requirements using LLM agents,
-          GraphRAG, and a Neo4j knowledge graph. MinionBot's core moat over generic tools like Cursor or
-          GitHub Copilot is its <strong>deep Zinnia domain knowledge</strong> — baked into coding skill
-          libraries, insurance-specific MCP servers, and a continuously evolving codebase graph.
+          Designed and built a reusable framework for legacy modernization and in-place bug fixes and features.
+          A deterministic controller scopes specialist agents, validates cited evidence and artifacts, runs build/test
+          gates, and records decisions in a hash-chained ledger.
         </p>
         <ul class="project-highlights">
-          <li>Multi-service architecture: orchestrator, planner, code-generator, Mosaic AI copilot</li>
-          <li>Parallel LLM sub-agents with sandbox verification and auto-PR creation</li>
-          <li>Neo4j + MongoDB GraphRAG knowledge graph with domain-aware memory</li>
-          <li>Java 17 / Spring Boot WebFlux reactive backend with Azure AD auth</li>
+          <li>Method-level code graph enables dependency-aware migration planning</li>
+          <li>In-place workflows tested on a sample project with simulated agents</li>
         </ul>
         <div class="project-tech">
-          <span>Java 17</span><span>Spring Boot</span><span>WebFlux</span><span>Python</span><span>FastAPI</span><span>React</span><span>MongoDB</span><span>Neo4j</span><span>Azure AD</span>
+          <span>PowerShell</span><span>Java</span><span>AI Agents</span><span>JSON Schema</span><span>Code Graph</span>
         </div>
       </article>
 
-      <article class="project-card featured" data-animate aria-label="ModernEapp AI Indexer project">
+      <article class="project-card" data-animate aria-label="Insurance application modernization project">
         <div class="project-card-header">
-          <span class="project-badge">AI Platform</span>
+          <span class="project-badge">Modernization</span>
         </div>
-        <h3 class="project-title">eApp AI Indexer &amp; RAG Chat System</h3>
+        <h3 class="project-title">Insurance Application Modernization</h3>
         <p class="project-desc">
-          Built an AI indexer for the eApp insurance codebase that extracts Java classes, business rules,
-          DB schemas, and UI logic into a <strong>Neo4j knowledge graph</strong>. Implemented a hybrid
-          <strong>RAG chat pipeline</strong> with pgvector semantic search, Neo4j graph traversal, cross-encoder
-          reranking, and LLM synthesis for contextual code Q&amp;A.
+          Leading modernization of TPP, eApp, and iHub for Indian Farm Bureau Insurance at Zinnia,
+          moving legacy Spring MVC/JSP workflows toward Spring Boot REST APIs and React.
         </p>
         <ul class="project-highlights">
-          <li>Automated codebase indexing into Neo4j graph nodes &amp; relationships</li>
-          <li>Hybrid RAG retrieval: pgvector + Neo4j + cross-encoder reranking</li>
-          <li>Integrated into eApp for contextual code Q&amp;A</li>
+          <li>Full-stack architecture and module-level delivery</li>
+          <li>Technical reviews and mentoring during migration</li>
         </ul>
         <div class="project-tech">
-          <span>Python</span><span>FastAPI</span><span>Neo4j</span><span>pgvector</span><span>PostgreSQL</span><span>OpenAI</span>
+          <span>Java</span><span>Spring Boot</span><span>React</span><span>Karaf</span><span>OSGi</span><span>REST</span>
         </div>
       </article>
 
-      <article class="project-card featured" data-animate aria-label="Multi-Agent Migration Framework project">
+      <article class="project-card" data-animate aria-label="eApp AI indexer and RAG chat project">
         <div class="project-card-header">
-          <span class="project-badge">AI Platform</span>
+          <span class="project-badge">AI Engineering</span>
         </div>
-        <h3 class="project-title">Multi-Agent Migration Framework</h3>
+        <h3 class="project-title">eApp AI Indexer &amp; RAG Chat</h3>
         <p class="project-desc">
-          Designed and built a <strong>deterministic multi-agent orchestration framework</strong> for legacy-to-modern
-          codebase migrations. Features 19 specialized AI agents orchestrated by a PowerShell state-machine controller,
-          method-level code graph analysis, evidence-checked artifact validation, and tamper-evident audit ledger.
+          Built a codebase indexer for Java classes, business rules, database schemas, and UI logic.
+          Developed contextual code Q&amp;A with hybrid retrieval over a Neo4j graph and pgvector embeddings.
         </p>
         <ul class="project-highlights">
-          <li>19 specialized agents: analyzer, architect, migrator, reviewer, auditor</li>
-          <li>Method-level code graph with 19M+ edges for dependency-ordered slicing</li>
-          <li>Evidence-checked validation with JSON schema enforcement</li>
-          <li>Works with Kiro, Cursor, Claude Code, GitHub Copilot</li>
+          <li>Graph indexing for source and business context</li>
+          <li>Semantic and graph retrieval with reranking</li>
         </ul>
         <div class="project-tech">
-          <span>PowerShell</span><span>Java</span><span>Maven</span><span>AI Agents</span><span>JSON Schema</span><span>Kiro</span><span>Cursor</span>
+          <span>Python</span><span>FastAPI</span><span>Neo4j</span><span>pgvector</span><span>PostgreSQL</span>
         </div>
       </article>
 
-      <article class="project-card featured" data-animate aria-label="Spring Boot Migration project">
+      <article class="project-card" data-animate aria-label="MinionBot AI platform contribution">
         <div class="project-card-header">
-          <span class="project-badge">Featured</span>
+          <span class="project-badge">Platform contribution</span>
         </div>
-        <h3 class="project-title">Spring MVC → Spring Boot + React Migration &mdash; Indian Farm Bureau</h3>
+        <h3 class="project-title">MinionBot AI Platform</h3>
         <p class="project-desc">
-          Leading the modernization of <strong>TPP, eApp and iHub</strong> insurance applications for
-          Indian Farm Bureau Insurance at Zinnia. Migrating the full stack from legacy Spring MVC / JSP
-          to a modern <strong>Spring Boot REST API + React SPA</strong> architecture.
+          Contributed to Zinnia's AI-assisted code generation platform, which uses LLM agents
+          and codebase context to support software delivery.
         </p>
         <ul class="project-highlights">
-          <li>Full-stack migration: Spring MVC → Spring Boot + React</li>
-          <li>Supporting 3 applications: TPP, eApp, iHub</li>
-          <li>Associate Technical Lead driving architecture and delivery</li>
+          <li>Supported platform adoption and engineering discussions</li>
+          <li>Worked with agent-based and knowledge-graph workflows</li>
         </ul>
         <div class="project-tech">
-          <span>Java</span><span>Spring Boot</span><span>React</span><span>Karaf</span><span>OSGi</span><span>MS SQL</span><span>REST APIs</span>
+          <span>LLM Agents</span><span>GraphRAG</span><span>Neo4j</span><span>Spring Boot</span>
         </div>
       </article>
 
-      <article class="project-card" data-animate aria-label="TPP Desjardins project">
+      <article class="project-card" data-animate aria-label="Policy processing integrations project">
         <div class="project-card-header">
-          <span class="project-badge" style="color:var(--accent-green);background:rgba(63,185,80,0.12);border-color:var(--accent-green);">Insurance</span>
+          <span class="project-badge project-badge--insurance">Insurance</span>
         </div>
-        <h3 class="project-title">The Policy Processor (TPP) &mdash; Desjardins</h3>
+        <h3 class="project-title">Policy Processing &amp; Integrations</h3>
         <p class="project-desc">
-          Insurance policy processing platform for <strong>Desjardins, Canada</strong> built at Ebix.
-          Involved in business development items, feature enhancements, bug fixes, and technical triage support.
+          Enhanced policy-processing workflows for Desjardins and developed XML/XSLT request-response
+          integrations for American Family Insurance at Ebix.
         </p>
         <ul class="project-highlights">
-          <li>Collaborated with team of 20+ on TPP Migration</li>
-          <li>Supervised 2 staff members</li>
-          <li>Awarded Best Employee of the Year 2020</li>
+          <li>Feature development, defect fixes, and integration support</li>
+          <li>Collaborated with a 20+ engineer migration team</li>
         </ul>
         <div class="project-tech">
-          <span>Java</span><span>JSP</span><span>Spring</span><span>Struts</span><span>JBoss</span><span>MS SQL</span>
+          <span>Java</span><span>Spring</span><span>JSP</span><span>Struts</span><span>MS SQL</span><span>XSLT</span>
         </div>
       </article>
 
-      <article class="project-card" data-animate aria-label="TPP American Family Insurance project">
+      <article class="project-card" data-animate aria-label="Lincoln Financial Group insurance platform project">
         <div class="project-card-header">
-          <span class="project-badge" style="color:var(--accent-green);background:rgba(63,185,80,0.12);border-color:var(--accent-green);">Insurance</span>
-        </div>
-        <h3 class="project-title">TPP &mdash; American Family Insurance</h3>
-        <p class="project-desc">
-          System interface development for <strong>American Family Insurance, USA</strong> at Ebix.
-          Created XML to XSLT mappings for Request/Response processing between platform components.
-        </p>
-        <ul class="project-highlights">
-          <li>XML → XSLT mapping for Request &amp; Response</li>
-          <li>System interface design and integration</li>
-        </ul>
-        <div class="project-tech">
-          <span>Java</span><span>JSP</span><span>Struts</span><span>Oracle</span><span>XSLT</span><span>JBoss</span>
-        </div>
-      </article>
-
-      <article class="project-card" data-animate aria-label="Lincoln Financial Group project">
-        <div class="project-card-header">
-          <span class="project-badge" style="color:var(--accent-green);background:rgba(63,185,80,0.12);border-color:var(--accent-green);">Insurance</span>
+          <span class="project-badge project-badge--insurance">Insurance</span>
         </div>
         <h3 class="project-title">Insurance Platform &mdash; Lincoln Financial Group</h3>
         <p class="project-desc">
-          Worked as Programmer Analyst at Cognizant for <strong>Lincoln Financial Group, USA</strong>.
-          Requirements gathering, design meetings, and troubleshooting across the insurance platform.
+          Supported insurance platform features at Cognizant, participating in requirements analysis,
+          technical design, documentation, and troubleshooting.
         </p>
+        <ul class="project-highlights">
+          <li>Java and Spring-based application development</li>
+          <li>Collaboration with business and technical stakeholders</li>
+        </ul>
         <div class="project-tech">
           <span>Java</span><span>Spring Boot</span><span>Spring MVC</span><span>REST</span><span>MS SQL</span>
         </div>

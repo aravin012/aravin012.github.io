@@ -3,342 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aravindan Pathirasamy – Resume</title>
-  <style>
-    /* ── Reset ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 11pt; }
-    body {
-      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-      color: #1a1a1a;
-      background: #fff;
-      line-height: 1.5;
-    }
-
-    /* ── Page wrapper ── */
-    .page {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 32px 36px;
-    }
-
-    /* ── Print toolbar (hidden in print) ── */
-    .print-toolbar {
-      background: #0969da;
-      color: #fff;
-      padding: 10px 36px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.85rem;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .print-toolbar span { opacity: 0.9; }
-    .toolbar-btns { display: flex; gap: 0.5rem; }
-    .toolbar-btn {
-      background: #fff;
-      color: #0969da;
-      border: none;
-      padding: 6px 16px;
-      border-radius: 4px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .toolbar-btn:hover { background: #e8f0fe; }
-    .toolbar-btn.back { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); }
-    .toolbar-btn.back:hover { background: rgba(255,255,255,0.1); }
-
-    /* ── Header ── */
-    .header { border-bottom: 2.5px solid #0969da; padding-bottom: 12px; margin-bottom: 14px; }
-    .header-name { font-size: 22pt; font-weight: 700; color: #0969da; letter-spacing: -0.3px; }
-    .header-title { font-size: 11.5pt; color: #444; font-weight: 600; margin-top: 2px; }
-    .header-contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 20px;
-      margin-top: 7px;
-      font-size: 9.5pt;
-      color: #555;
-    }
-    .header-contact a { color: #0969da; text-decoration: none; }
-    .header-contact span::before { content: '• '; color: #aaa; }
-    .header-contact span:first-child::before { content: ''; }
-
-    /* ── Sections ── */
-    .section { margin-bottom: 14px; }
-    .section-title {
-      font-size: 10.5pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #0969da;
-      border-bottom: 1px solid #cde;
-      padding-bottom: 3px;
-      margin-bottom: 8px;
-    }
-
-    /* ── Summary ── */
-    .summary { font-size: 10pt; color: #333; }
-
-    /* ── Experience ── */
-    .job { margin-bottom: 11px; }
-    .job-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-    .job-role { font-size: 10.5pt; font-weight: 700; color: #111; }
-    .job-period { font-size: 9pt; color: #666; white-space: nowrap; flex-shrink: 0; }
-    .job-company { font-size: 9.5pt; color: #0969da; font-weight: 600; margin-bottom: 2px; }
-    .job-client { font-size: 9pt; color: #555; font-style: italic; margin-bottom: 4px; }
-    .job-bullets { margin-left: 14px; }
-    .job-bullets li { font-size: 9.5pt; color: #333; margin-bottom: 2px; list-style: disc; }
-    .job-tags { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px; }
-    .job-tags span {
-      font-size: 8pt;
-      background: #f0f4ff;
-      color: #0969da;
-      border: 1px solid #c8d8f8;
-      padding: 1px 7px;
-      border-radius: 3px;
-    }
-
-    /* ── Skills ── */
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
-    .skill-row { font-size: 9.5pt; color: #333; display: flex; }
-    .skill-row strong { color: #111; min-width: 110px; flex-shrink: 0; }
-
-    /* ── Education ── */
-    .edu-item { display: flex; justify-content: space-between; align-items: baseline; }
-    .edu-degree { font-size: 10pt; font-weight: 700; color: #111; }
-    .edu-school { font-size: 9.5pt; color: #555; }
-    .edu-year { font-size: 9pt; color: #777; }
-
-    /* ── Accomplishments ── */
-    .acc-list { margin-left: 14px; }
-    .acc-list li { font-size: 9.5pt; color: #333; margin-bottom: 3px; list-style: disc; }
-
-    /* ── Projects ── */
-    .project { margin-bottom: 9px; }
-    .project-title { font-size: 10pt; font-weight: 700; color: #111; }
-    .project-desc { font-size: 9.5pt; color: #333; margin-top: 2px; }
-    .project-tech { font-size: 8.5pt; color: #0969da; margin-top: 3px; }
-
-    /* ── Print ── */
-    @media print {
-      .print-toolbar { display: none !important; }
-      html { font-size: 10.5pt; }
-      .page { padding: 18px 20px; max-width: 100%; }
-      body { background: #fff; }
-      a { color: #0969da !important; }
-      @page { margin: 14mm 12mm; size: A4; }
-    }
-  </style>
+  <meta name="description" content="Formal resume and cover letter for Aravindan Pathirasamy. Choose a one-page or detailed resume and export as PDF or Word." />
+  <title>Aravindan Pathirasamy | Resume &amp; Cover Letter</title>
+  <link rel="stylesheet" href="assets/css/documents.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/docx@9.5.1/dist/index.iife.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script defer src="assets/js/documents.js"></script>
 </head>
 <body>
-
-<!-- Print toolbar -->
-<div class="print-toolbar" id="toolbar">
-  <span>📄 Aravindan Pathirasamy — Resume &nbsp;|&nbsp; Print or Save as PDF using Ctrl+P</span>
-  <div class="toolbar-btns">
-    <a href="index.html" class="toolbar-btn back">← Back to Portfolio</a>
-    <button class="toolbar-btn" onclick="window.print()">🖨 Print / Save PDF</button>
-  </div>
-</div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-name">Aravindan Pathirasamy</div>
-    <div class="header-title">Associate Technical Lead — Java · Spring Boot · Karaf · React · AI Platforms</div>
-    <div class="header-contact">
-      <span>Coimbatore, Tamil Nadu, India</span>
-      <span><a href="mailto:aravin012@gmail.com">aravin012@gmail.com</a></span>
-      <span>+91 86680 76545</span>
-      <span><a href="https://www.linkedin.com/in/aravindan-pathirasamy-b56708a7/" target="_blank">LinkedIn</a></span>
-      <span><a href="https://github.com/aravin012" target="_blank">github.com/aravin012</a></span>
-      <span><a href="https://aravin012.github.io" target="_blank">aravin012.github.io</a></span>
+  <header class="workspace-header">
+    <a href="index.html" class="back-link">← Portfolio</a>
+    <div>
+      <span class="eyebrow">Document studio</span>
+      <h1>Resume &amp; cover letter</h1>
+      <p>Choose a format, review the page, then export a clean, editable document.</p>
     </div>
   </header>
 
-  <!-- SUMMARY -->
-  <section class="section">
-    <div class="section-title">Professional Summary</div>
-    <p class="summary">
-      Associate Technical Lead with 9+ years of experience delivering enterprise Java applications across insurance,
-      fintech, and AI platform domains. Expert in Java, Spring Boot, Apache Karaf (OSGi), and React.
-      Led Spring MVC → Spring Boot + React migration for Indian Farm Bureau Insurance (TPP, eApp, iHub) at Zinnia.
-      Contributed to MinionBot and built a multi-agent migration framework with 19 specialized AI agents for
-      evidence-checked legacy-to-modern codebase migrations. Proven track record in full-stack delivery, technical
-      leadership, and AI-powered development platforms. Open to on-site, hybrid, and remote roles.
-    </p>
-  </section>
+  <main class="workspace">
+    <aside class="controls" aria-label="Document options">
+      <div class="control-heading">01 / Document</div>
+      <fieldset class="format-options">
+        <legend class="sr-only">Document layout</legend>
+        <label class="format-option"><input type="radio" name="format" value="one" checked /><span><strong>One-page resume</strong><small>Concise career overview</small></span></label>
+        <label class="format-option"><input type="radio" name="format" value="detailed" /><span><strong>Detailed resume</strong><small>Two-page experience &amp; projects</small></span></label>
+        <label class="format-option"><input type="radio" name="format" value="letter" /><span><strong>Cover letter</strong><small>Tailor it to an opportunity</small></span></label>
+      </fieldset>
 
-  <!-- SKILLS -->
-  <section class="section">
-    <div class="section-title">Technical Skills</div>
-    <div class="skills-grid">
-      <div class="skill-row"><strong>Languages:</strong> Java 8–17, J2EE, JavaScript, Python, SQL</div>
-      <div class="skill-row"><strong>Frameworks:</strong> Spring Boot, Spring MVC, Spring Security, React, FastAPI</div>
-      <div class="skill-row"><strong>OSGi:</strong> Apache Karaf, OSGi Bundles</div>
-      <div class="skill-row"><strong>ORM / Data:</strong> Hibernate / JPA, Spring Data</div>
-      <div class="skill-row"><strong>Databases:</strong> MS SQL Server, Oracle, PostgreSQL, MongoDB, Neo4j</div>
-      <div class="skill-row"><strong>AI / LLM:</strong> Multi-Agent Orchestration, LLM Agents, GraphRAG, RAG, MCP</div>
-      <div class="skill-row"><strong>Web Services:</strong> REST APIs, SOAP, XSLT</div>
-      <div class="skill-row"><strong>Tools:</strong> Git, Maven, Jenkins, Docker, JIRA, SonarQube</div>
-      <div class="skill-row"><strong>Testing:</strong> JUnit, Mockito, Postman, Swagger / OpenAPI</div>
-      <div class="skill-row"><strong>Auth:</strong> Azure AD, OAuth2 / JWT, Spring Security</div>
-    </div>
-  </section>
-
-  <!-- TECHNICAL LEADERSHIP -->
-  <section class="section">
-    <div class="section-title">Technical Leadership</div>
-    <ul class="acc-list">
-      <li>Architected multi-agent migration framework with 19 specialized AI agents, deterministic orchestration, and method-level code graph (19M+ edges) for dependency-ordered migrations.</li>
-      <li>Designed hybrid RAG architecture combining pgvector, Neo4j graph traversal, and LLM reranking — powering contextual code Q&amp;A across eApp insurance platform.</li>
-      <li>Led Spring MVC → Spring Boot + React modernization strategy for 3 insurance applications, defining module boundaries, API contracts, and migration sequence.</li>
-      <li>Established coding standards, review processes, and mentorship programs across teams of 5–20+ engineers.</li>
-    </ul>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section">
-    <div class="section-title">Work Experience</div>
-
-    <div class="job">
-      <div class="job-header">
-        <span class="job-role">Software Engineer III &amp; Associate Technical Lead</span>
-        <span class="job-period">Apr 2024 – Present</span>
+      <div id="letter-fields" class="letter-fields" hidden>
+        <div class="control-heading">02 / Personalize</div>
+        <label for="recipient">Recipient</label>
+        <input id="recipient" type="text" maxlength="80" placeholder="Hiring Manager" autocomplete="off" />
+        <label for="company">Company</label>
+        <input id="company" type="text" maxlength="80" placeholder="Company name (optional)" autocomplete="organization" />
+        <label for="role">Position</label>
+        <input id="role" type="text" maxlength="100" placeholder="Software Engineering Lead" autocomplete="off" />
       </div>
-      <div class="job-company">Zinnia, Coimbatore</div>
-      <div class="job-client">Client: Indian Farm Bureau Insurance, USA</div>
-      <ul class="job-bullets">
-        <li>Leading Spring MVC → Spring Boot + React migration for TPP, eApp, and iHub insurance applications.</li>
-        <li>Promoted to Software Engineer III (Jul 2025) after delivering key module milestones on the platform.</li>
-        <li>Contributed to MinionBot — an AI platform using LLM agents, GraphRAG, and Neo4j for autonomous code generation.</li>
-        <li>Built a multi-agent migration framework with 19 specialized AI agents orchestrated by a deterministic controller for evidence-checked legacy-to-modern codebase migrations.</li>
-        <li>Developed a RAG chat system for eApp with hybrid retrieval using pgvector, Neo4j graph traversal, and LLM reranking.</li>
-        <li>Conduct code reviews, enforce coding standards, and mentor team members within the module.</li>
-      </ul>
-      <div class="job-tags">
-        <span>Java</span><span>Spring Boot</span><span>React</span><span>Karaf</span><span>OSGi</span><span>MS SQL</span><span>Neo4j</span><span>Azure AD</span>
+
+      <div class="export-actions">
+        <div class="control-heading">Export</div>
+        <button type="button" id="pdf-button" class="action primary">Print / Save as PDF <span aria-hidden="true">↗</span></button>
+        <button type="button" id="word-button" class="action secondary">Download Word (.docx) <span aria-hidden="true">↓</span></button>
+        <p class="export-note">PDF opens your browser’s print dialog. Choose “Save as PDF” and A4 paper; turn off browser headers and footers.</p>
+        <p id="export-status" class="export-status" role="status" aria-live="polite"></p>
       </div>
-    </div>
+    </aside>
 
-    <div class="job">
-      <div class="job-header">
-        <span class="job-role">Module Lead</span>
-        <span class="job-period">Aug 2021 – Mar 2024 · 2 yrs 8 mos</span>
-      </div>
-      <div class="job-company">EbixCash, Coimbatore</div>
-      <ul class="job-bullets">
-        <li>Led development of fintech and insurance workflow modules, owning feature planning through to delivery.</li>
-        <li>Designed and implemented REST APIs consumed by downstream web and mobile clients.</li>
-        <li>Drove technical discussions, task allocation, and delivery tracking for a team of developers.</li>
-      </ul>
-      <div class="job-tags">
-        <span>Java</span><span>Spring Boot</span><span>REST APIs</span><span>MS SQL</span><span>Microservices</span>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="job-header">
-        <span class="job-role">Programmer Analyst</span>
-        <span class="job-period">Jun 2019 – Aug 2021 · 2 yrs 3 mos</span>
-      </div>
-      <div class="job-company">Cognizant Technology Solutions, Coimbatore</div>
-      <div class="job-client">Client: Lincoln Financial Group, USA</div>
-      <ul class="job-bullets">
-        <li>Participated in requirements gathering and design development meetings for insurance platform features.</li>
-        <li>Wrote, modified, and maintained software documentation and specifications.</li>
-        <li>Troubleshot software issues using debugging processes; worked extensively with Java, Spring Boot, and MS SQL.</li>
-      </ul>
-      <div class="job-tags">
-        <span>Java</span><span>Spring Boot</span><span>Spring MVC</span><span>REST</span><span>MS SQL</span>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="job-header">
-        <span class="job-role">Software Engineer</span>
-        <span class="job-period">May 2017 – Jun 2019 · 2 yrs 2 mos</span>
-      </div>
-      <div class="job-company">Ebix Software India Pvt. Ltd., Coimbatore</div>
-      <ul class="job-bullets">
-        <li>Developed TPP for Desjardins, Canada — business development, enhancements, and bug fixes using JSP, Spring, Struts, JBoss, MS SQL.</li>
-        <li>Built TPP system interface for American Family Insurance, USA — XML to XSLT Request/Response mappings.</li>
-        <li>Collaborated with 20+ engineers in TPP Migration; supervised 2 staff members.</li>
-        <li>Awarded <strong>Best Employee of the Year 2020</strong>.</li>
-      </ul>
-      <div class="job-tags">
-        <span>Java</span><span>Spring</span><span>Struts</span><span>JSP</span><span>MS SQL</span><span>Oracle</span><span>XSLT</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section">
-    <div class="section-title">Education</div>
-    <div class="edu-item">
-      <div>
-        <div class="edu-degree">B.E. Mechatronics, Robotics &amp; Automation Engineering</div>
-        <div class="edu-school">SNS College of Technology, Coimbatore (Anna University)</div>
-      </div>
-      <div class="edu-year">2012 – 2016</div>
-    </div>
-  </section>
-
-  <!-- ACCOMPLISHMENTS -->
-  <section class="section">
-    <div class="section-title">Accomplishments</div>
-    <ul class="acc-list">
-      <li>Awarded <strong>Best Employee of the Year 2020</strong> at Cognizant for outstanding performance.</li>
-      <li>Received <strong>Values in Action</strong> award at Zinnia for contributions to MinionBot AI platform.</li>
-      <li>Collaborated with a team of 20+ engineers in the development and successful delivery of the TPP Migration.</li>
-      <li>Supervised and mentored team members, ensuring quality delivery across multiple projects.</li>
-    </ul>
-  </section>
-
-  <!-- KEY PROJECTS -->
-  <section class="section">
-    <div class="section-title">Key Projects</div>
-
-    <div class="project">
-      <div class="project-title">Spring MVC → Spring Boot + React Migration — Indian Farm Bureau Insurance (Zinnia)</div>
-      <div class="project-desc">Leading full-stack migration of TPP, eApp, and iHub insurance applications from legacy Spring MVC/JSP to Spring Boot REST APIs + React SPA. Module-level ownership covering architecture, delivery, and team mentoring.</div>
-      <div class="project-tech">Java · Spring Boot · React · Karaf · OSGi · MS SQL · REST APIs</div>
-    </div>
-
-    <div class="project">
-      <div class="project-title">MinionBot — AI-Powered Code Generation Platform (Zinnia)</div>
-      <div class="project-desc">Key contributor and platform champion for MinionBot — Zinnia's enterprise AI platform that autonomously generates production code from requirements using LLM agents, GraphRAG, and a Neo4j knowledge graph. Driving roadmap discussions on cross-system awareness and long-term platform ownership.</div>
-      <div class="project-tech">Java 17 · Spring Boot · WebFlux · Python · FastAPI · React · MongoDB · Neo4j · Azure AD</div>
-    </div>
-
-    <div class="project">
-      <div class="project-title">Multi-Agent Migration Framework (Zinnia)</div>
-      <div class="project-desc">Designed and built a deterministic multi-agent orchestration framework for legacy-to-modern codebase migrations. Features 19 specialized AI agents (analyzer, architect, migrator, reviewer, auditor), a PowerShell state-machine controller, method-level code graph with 19M+ edges, evidence-checked artifact validation, and tamper-evident ledger for audit trails.</div>
-      <div class="project-tech">PowerShell · Java · Maven · AI Agents · JSON Schema · Code Graph · Kiro · Cursor · Claude</div>
-    </div>
-
-    <div class="project">
-      <div class="project-title">eApp AI Indexer &amp; RAG Chat System (Zinnia)</div>
-      <div class="project-desc">Built an AI indexer for the eApp insurance codebase that extracts Java classes, business rules, DB schemas, and UI logic into a Neo4j knowledge graph. Implemented a hybrid RAG chat pipeline with pgvector semantic search, Neo4j graph traversal, cross-encoder reranking, and LLM synthesis for contextual code Q&amp;A.</div>
-      <div class="project-tech">Python · FastAPI · Neo4j · pgvector · PostgreSQL · OpenAI · GraphRAG</div>
-    </div>
-  </section>
-
-</div><!-- /page -->
-
-<script>
-  // Auto-trigger print if ?print=1 in URL
-  if (new URLSearchParams(window.location.search).get('print') === '1') {
-    window.addEventListener('load', () => setTimeout(() => window.print(), 500));
-  }
-</script>
+    <section class="preview" aria-label="Document preview">
+      <div class="preview-caption"><span>LIVE PREVIEW</span><span id="page-label">01 / 01</span></div>
+      <div id="document-preview"></div>
+    </section>
+  </main>
 </body>
 </html>
