@@ -12,6 +12,10 @@ from docx import Document
 from playwright.sync_api import sync_playwright
 from pypdf import PdfReader
 try:
+    import fitz
+except ImportError:
+    fitz = None
+try:
     import win32com.client
 except ImportError:
     win32com = None
@@ -40,7 +44,15 @@ def main():
             assert paper.count() == expected_pages, f"{variant}: unexpected preview page count"
             for index in range(expected_pages):
                 heights = paper.nth(index).evaluate("element => [element.clientHeight, element.scrollHeight]")
+                if variant == "one":
+                    columns = page.locator(".one-page-columns").evaluate("element => [element.firstElementChild.offsetHeight, element.lastElementChild.offsetHeight]")
+                    print(f"one-page column heights: {columns}")
+                    assert abs(columns[0] - columns[1]) < heights[0] * 0.08, "one-page columns are unbalanced"
                 assert heights[1] <= heights[0] + 2, f"{variant}: page {index + 1} overflows: {heights}"
+                used = paper.nth(index).evaluate("element => ((element.querySelector('.one-page-columns') || element.querySelector('.doc-section:last-of-type') || element.lastElementChild).getBoundingClientRect().bottom - element.getBoundingClientRect().top) / element.clientHeight")
+                print(f"{variant} page {index + 1} utilization: {used:.0%}")
+                minimum = 0.76 if variant == "letter" else 0.80 if variant == "detailed" else 0.86
+                assert minimum <= used < 0.96, f"{variant}: page {index + 1} uses {used:.0%}; expected {minimum:.0%}–95%"
                 if os.environ.get("EXPORT_TEST_OUTPUT"):
                     paper.nth(index).screenshot(path=str(output / f"{variant}-{index + 1}.png"))
 
@@ -64,6 +76,10 @@ def main():
             document = Document(word_file)
             content = " ".join(paragraph.text for paragraph in document.paragraphs)
             assert "Aravindan Pathirasamy" in content
+            if variant == "one":
+                assert len(document.tables) == 1 and len(document.tables[0].rows[0].cells) == 2
+                assert "Zinnia" in document.tables[0].cell(0, 0).text
+                assert "TECHNICAL EXPERTISE" in document.tables[0].cell(0, 1).text
             if variant == "letter":
                 assert "Taylor Smith" in content and "Example Company" in content and "Engineering Lead" in content
             if word:
@@ -72,6 +88,18 @@ def main():
                     word_doc.Repaginate()
                     pages = word_doc.ComputeStatistics(2)  # wdStatisticPages
                     assert pages == expected_pages, f"{variant}: Word has {pages} pages, expected {expected_pages}"
+                    if fitz:
+                        rendered_word = output / f"{variant}-word.pdf"
+                        word_doc.ExportAsFixedFormat(str(rendered_word), 17)  # wdExportFormatPDF
+                        with fitz.open(rendered_word) as rendered:
+                            for index, word_page in enumerate(rendered):
+                                blocks = [block for block in word_page.get_text("blocks") if block[4].strip()]
+                                used = max(block[3] for block in blocks) / word_page.rect.height
+                                print(f"{variant} Word page {index + 1} utilization: {used:.0%}")
+                                minimum = 0.70 if variant == "letter" else 0.78 if variant == "detailed" else 0.82
+                                assert minimum <= used < 0.96, f"{variant}: Word page {index + 1} uses {used:.0%}"
+                                if os.environ.get("EXPORT_TEST_OUTPUT"):
+                                    word_page.get_pixmap(matrix=fitz.Matrix(1.3, 1.3)).save(output / f"{variant}-word-{index + 1}.png")
                 finally:
                     word_doc.Close(False)
             print(f"{variant}: {expected_pages} PDF page(s), DOCX opens, preview fits")

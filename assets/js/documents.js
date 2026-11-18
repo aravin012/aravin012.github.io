@@ -9,9 +9,10 @@ const profile = {
   phone: '+91 86680 76545',
   linkedin: 'linkedin.com/in/aravindan-pathirasamy-b56708a7',
   site: 'aravin012.github.io',
+  github: 'github.com/aravin012',
 };
 
-const summary = 'Associate Technical Lead with 9+ years of experience delivering enterprise Java applications for insurance and fintech. Hands-on expertise in Spring Boot, Apache Karaf (OSGi), React, and legacy modernization. Built a governed multi-agent engineering framework for evidence-checked migration and in-place software changes.';
+const summary = 'Associate Technical Lead with 9+ years of experience building enterprise Java applications across insurance and fintech. Lead full-stack modernization with Spring Boot, Apache Karaf (OSGi), and React; combine hands-on delivery with technical design, code review, and mentoring. Designed a governed multi-agent engineering framework for evidence-checked migration and in-place software changes.';
 
 const skills = [
   ['Core engineering', 'Java 8–17, Spring Boot, Spring MVC, REST APIs, React, JavaScript, SQL'],
@@ -25,28 +26,33 @@ const jobs = [
     bullets: [
       'Lead Spring MVC/JSP to Spring Boot and React modernization across TPP, eApp, and iHub insurance applications.',
       'Built a governed multi-agent engineering framework with controller-scoped tasks, evidence checks, build/test gates, and an audit trail.',
-      'Contributed to the MinionBot AI platform and developed hybrid RAG retrieval for contextual eApp code Q&A.',
-      'Review code and mentor engineers; promoted to Software Engineer III in July 2025.',
+      'Developed a codebase indexer and hybrid RAG retrieval for contextual eApp code Q&A using Neo4j and pgvector.',
+      'Define module boundaries and API contracts, review code, and mentor engineers during full-stack delivery.',
+      'Contributed to the MinionBot AI platform and its agent-based engineering workflows.',
+      'Promoted to Software Engineer III in July 2025 after delivering key module milestones.',
     ],
   },
   {
     title: 'Module Lead', company: 'EbixCash', period: 'Aug 2021 – Mar 2024',
     bullets: [
       'Led delivery of fintech and insurance workflow modules, from planning through implementation.',
-      'Designed Spring Boot REST APIs and coordinated technical decisions, task ownership, and delivery.',
+      'Designed and implemented Spring Boot REST APIs for downstream web and mobile clients.',
+      'Coordinated technical decisions, task ownership, and delivery across a team of developers.',
     ],
   },
   {
     title: 'Programmer Analyst', company: 'Cognizant Technology Solutions', period: 'Jun 2019 – Aug 2021',
     bullets: [
       'Developed and supported insurance platform features for Lincoln Financial Group using Java, Spring Boot, and MS SQL Server.',
-      'Participated in requirements analysis, technical design, documentation, and troubleshooting.',
+      'Participated in requirements analysis and technical design for insurance workflows.',
+      'Maintained software documentation and investigated production issues through debugging.',
     ],
   },
   {
     title: 'Software Engineer', company: 'Ebix Software India Pvt. Ltd.', period: 'May 2017 – Jun 2019',
     bullets: [
-      'Enhanced policy-processing applications and built XML/XSLT integrations for North American insurers.',
+      'Enhanced policy-processing workflows for Desjardins using Java, Spring, JSP, Struts, and MS SQL Server.',
+      'Built XML/XSLT request-response integrations for American Family Insurance.',
       'Collaborated with a 20+ engineer migration team and supervised two team members.',
     ],
   },
@@ -55,15 +61,15 @@ const jobs = [
 const projects = [
   {
     title: 'Governed multi-agent engineering framework',
-    description: 'Designed a reusable PowerShell controller that dispatches scoped agents, validates evidence and JSON artifacts, runs builds/tests, and records decisions in a hash-chained ledger. A method-level Java code graph supports dependency-aware migration planning; in-place work-item flows were tested on a sample project with simulated agents.',
+    description: 'Designed a reusable PowerShell controller that dispatches scoped specialist agents, validates cited evidence and schema-bound artifacts, runs build/test gates, and records decisions in a hash-chained audit ledger. A method-level Java code graph supports dependency-aware migration planning; in-place work-item flows were tested on a sample project with simulated agents.',
   },
   {
     title: 'eApp AI indexer & RAG chat',
-    description: 'Indexed code and business context into Neo4j and developed hybrid retrieval with pgvector, graph traversal, and reranking for contextual code Q&A.',
+    description: 'Indexed Java classes, business rules, database schemas, and UI context into Neo4j. Developed hybrid retrieval with pgvector semantic search, graph traversal, and reranking for contextual code Q&A.',
   },
   {
     title: 'Insurance application modernization',
-    description: 'Led full-stack migration planning and delivery across TPP, eApp, and iHub, moving legacy Spring MVC/JSP workflows toward Spring Boot APIs and React.',
+    description: 'Led full-stack migration planning and module delivery across TPP, eApp, and iHub, moving legacy Spring MVC/JSP workflows toward Spring Boot REST APIs and React. Defined module boundaries and API contracts while mentoring engineers through the transition.',
   },
 ];
 
@@ -75,25 +81,33 @@ function skill(label, value) { return { type: 'skill', label, value }; }
 function job(item, count) { return { type: 'job', ...item, bullets: item.bullets.slice(0, count) }; }
 function project(item) { return { type: 'project', ...item }; }
 
-function resumePages(format) {
-  if (format === 'one') return [[
-    section('Profile', [text(summary)]),
-    section('Technical expertise', skills.map(([label, value]) => skill(label, value))),
-    section('Professional experience', [job(jobs[0], 3), job(jobs[1], 2), job(jobs[2], 1), job(jobs[3], 1)]),
-    section('Selected project', [project({
-      title: projects[0].title,
-      description: 'Built a controller-led AI agent framework for evidence-checked modernization and in-place changes, with independent review, automated build/test gates, and a traceable audit ledger.',
-    })]),
-    section('Education', [text(education)]),
-  ]];
+function onePageSections() {
+  return {
+    lead: section('Profile', [text(summary)]),
+    left: [section('Professional experience', [job(jobs[0], 5), job(jobs[1], 3), job(jobs[2], 2), job(jobs[3], 2)])],
+    right: [
+      section('Technical expertise', skills.map(([label, value]) => skill(label, value))),
+      section('Selected engineering work', [project(projects[0]), project(projects[1])]),
+      section('Education', [text(education)]),
+      section('Recognition', [text('Values in Action award at Zinnia; Best Employee of the Year 2020 at Cognizant.')]),
+    ],
+  };
+}
+
+function resumePages() {
   return [
     [
       section('Profile', [text(summary)]),
       section('Technical expertise', skills.map(([label, value]) => skill(label, value))),
-      section('Professional experience', [job(jobs[0], 4), job(jobs[1], 2)]),
+      section('Professional experience', [job(jobs[0], 6), job(jobs[1], 3)]),
+      section('Technical leadership', [
+        text('Guide module architecture and API design for insurance application modernization, balancing legacy behavior with a modern Spring Boot and React delivery model.'),
+        text('Apply independent code review, evidence-checked validation, and build/test gates to AI-assisted engineering work.'),
+        text('Use a method-level Java code graph to plan dependency-aware migration work and make cross-module handoffs explicit.'),
+      ]),
     ],
     [
-      section('Professional experience · continued', [job(jobs[2], 2), job(jobs[3], 2)]),
+      section('Professional experience · continued', [job(jobs[2], 3), job(jobs[3], 3)]),
       section('Selected engineering work', projects.map(project)),
       section('Education', [text(education)]),
       section('Recognition', [text('Values in Action award at Zinnia for contributions to the MinionBot AI platform; Best Employee of the Year 2020 at Cognizant.')]),
@@ -118,7 +132,7 @@ function header(continued = false) {
   return `<header class="doc-header"><div class="doc-name">${escapeHtml(profile.name)}</div>
     <div class="doc-role">${escapeHtml(profile.title)}${continued ? ' · Continued' : ''}</div>
     <div class="doc-contact"><span>${escapeHtml(profile.location)}</span><a href="mailto:${profile.email}">${profile.email}</a>
-    <span>${escapeHtml(profile.phone)}</span><span>${escapeHtml(profile.linkedin)}</span><span>${escapeHtml(profile.site)}</span></div></header>`;
+    <span>${escapeHtml(profile.phone)}</span><span>${escapeHtml(profile.linkedin)}</span><span>${escapeHtml(profile.site)}</span><span>${escapeHtml(profile.github)}</span></div></header>`;
 }
 
 function renderItem(item) {
@@ -127,6 +141,10 @@ function renderItem(item) {
   if (item.type === 'project') return `<div class="doc-row"><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.description)}</p></div>`;
   return `<div class="doc-row"><div class="doc-row-head"><strong>${escapeHtml(item.title)}</strong><time>${escapeHtml(item.period)}</time></div>
     <div class="doc-sub">${escapeHtml(item.company)}</div><ul class="doc-list">${item.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ul></div>`;
+}
+
+function renderSection(s) {
+  return `<section class="doc-section"><h2>${escapeHtml(s.title)}</h2>${s.items.map(renderItem).join('')}</section>`;
 }
 
 function letterContent() {
@@ -158,10 +176,15 @@ function render() {
       <p class="letter-greeting">Dear ${escapeHtml(letter.recipient)},</p>
       <div class="letter-body">${letter.paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('')}</div>
       <div class="letter-close">Yours sincerely,</div><div class="letter-signature">${escapeHtml(profile.name)}</div></article>`;
+  } else if (format === 'one') {
+    const content = onePageSections();
+    preview.innerHTML = `<article class="paper">${header()}${renderSection(content.lead)}
+      <div class="one-page-columns"><div class="one-page-main">${content.left.map(renderSection).join('')}</div>
+      <div class="one-page-side">${content.right.map(renderSection).join('')}</div></div></article>`;
   } else {
-    const pages = resumePages(format);
+    const pages = resumePages();
     preview.innerHTML = pages.map((sections, index) => `<article class="paper">${header(index > 0)}
-      ${sections.map(s => `<section class="doc-section"><h2>${escapeHtml(s.title)}</h2>${s.items.map(renderItem).join('')}</section>`).join('')}
+      ${sections.map(renderSection).join('')}
       ${pages.length > 1 ? `<div class="doc-page-marker">${escapeHtml(profile.name)} · ${index + 1} / ${pages.length}</div>` : ''}</article>`).join('');
   }
   pageLabel.textContent = format === 'detailed' ? '01 / 02' : '01 / 01';
@@ -173,22 +196,38 @@ letterFields.querySelectorAll('input').forEach(input => input.addEventListener('
 document.getElementById('pdf-button').addEventListener('click', () => window.print());
 
 function createWord() {
-  const { Document, Packer, Paragraph, TextRun, BorderStyle } = window.docx;
+  const { Document, Paragraph, TextRun, BorderStyle, Table, TableRow, TableCell, WidthType } = window.docx;
   const format = currentFormat();
   const compact = format === 'one';
-  const bodySize = compact ? 18 : 20;
-  const spacing = compact ? 35 : 65;
+  const bodySize = format === 'letter' ? 22 : compact ? 20 : 21;
+  const spacing = compact ? 70 : 95;
   const color = '25536B';
   const paragraphs = [];
   const normal = value => new Paragraph({ children: [new TextRun(value)], spacing: { after: spacing }, keepTogether: true });
-  const heading = value => new Paragraph({ children: [new TextRun({ text: value.toUpperCase(), bold: true, color, size: 17 })],
-    spacing: { before: compact ? 100 : 150, after: 75 }, border: { bottom: { color: 'CCD6DB', style: BorderStyle.SINGLE, size: 5, space: 4 } }, keepNext: true });
+  const heading = value => new Paragraph({ children: [new TextRun({ text: value.toUpperCase(), bold: true, color, size: 19 })],
+    spacing: { before: compact ? 140 : 180, after: 95 }, border: { bottom: { color: 'CCD6DB', style: BorderStyle.SINGLE, size: 5, space: 4 } }, keepNext: true });
   const addHeader = (continued = false) => {
-    paragraphs.push(new Paragraph({ pageBreakBefore: continued, children: [new TextRun({ text: profile.name, font: 'Georgia', size: compact ? 40 : 44, color: '1D2D38' })], spacing: { after: 40 }, keepNext: true }));
-    paragraphs.push(new Paragraph({ children: [new TextRun({ text: profile.title + (continued ? ' · Continued' : ''), bold: true, color, size: 19 })], spacing: { after: 55 }, keepNext: true }));
-    paragraphs.push(new Paragraph({ children: [new TextRun({ text: `${profile.location}  |  ${profile.email}  |  ${profile.phone}`, color: '52616B', size: 16 })], spacing: { after: 25 }, keepNext: true }));
-    paragraphs.push(new Paragraph({ children: [new TextRun({ text: `${profile.linkedin}  |  ${profile.site}`, color: '52616B', size: 16 })], spacing: { after: compact ? 105 : 180 }, border: { bottom: { color, style: BorderStyle.SINGLE, size: 10, space: 8 } } }));
+    paragraphs.push(new Paragraph({ pageBreakBefore: continued, children: [new TextRun({ text: profile.name, font: 'Georgia', size: compact ? 44 : 48, color: '1D2D38' })], spacing: { after: 50 }, keepNext: true }));
+    paragraphs.push(new Paragraph({ children: [new TextRun({ text: profile.title + (continued ? ' · Continued' : ''), bold: true, color, size: 21 })], spacing: { after: 65 }, keepNext: true }));
+    paragraphs.push(new Paragraph({ children: [new TextRun({ text: `${profile.location}  |  ${profile.email}  |  ${profile.phone}`, color: '52616B', size: 17 })], spacing: { after: 35 }, keepNext: true }));
+    paragraphs.push(new Paragraph({ children: [new TextRun({ text: `${profile.linkedin}  |  ${profile.site}  |  ${profile.github}`, color: '52616B', size: 17 })], spacing: { after: compact ? 130 : 180 }, border: { bottom: { color, style: BorderStyle.SINGLE, size: 10, space: 8 } } }));
   };
+  const addSections = (target, sections) => sections.forEach(s => {
+    target.push(heading(s.title));
+    s.items.forEach(item => {
+      if (item.type === 'text') target.push(normal(item.value));
+      if (item.type === 'skill') target.push(new Paragraph({ children: [new TextRun({ text: `${item.label}: `, bold: true }), new TextRun(item.value)], spacing: { after: spacing } }));
+      if (item.type === 'project') {
+        target.push(new Paragraph({ children: [new TextRun({ text: item.title, bold: true })], spacing: { before: 100, after: 40 }, keepNext: true }));
+        target.push(normal(item.description));
+      }
+      if (item.type === 'job') {
+        target.push(new Paragraph({ children: [new TextRun({ text: item.title, bold: true }), new TextRun({ text: `  |  ${item.period}`, color: '52616B', size: 17 })], spacing: { before: 90, after: 25 }, keepNext: true }));
+        target.push(new Paragraph({ children: [new TextRun({ text: item.company, bold: true, color, size: 18 })], spacing: { after: 45 }, keepNext: true }));
+        item.bullets.forEach(b => target.push(new Paragraph({ text: b, bullet: { level: 0 }, indent: { left: 290, hanging: 170 }, spacing: { after: compact ? 55 : 75 }, keepTogether: true })));
+      }
+    });
+  });
 
   if (format === 'letter') {
     const letter = letterContent();
@@ -198,34 +237,37 @@ function createWord() {
     if (letter.company) paragraphs.push(normal(letter.company));
     paragraphs.push(new Paragraph({ children: [new TextRun({ text: `Re: ${letter.role}`, bold: true, color })], spacing: { before: 180, after: 220 } }));
     paragraphs.push(new Paragraph({ text: `Dear ${letter.recipient},`, spacing: { after: 220 } }));
-    letter.paragraphs.forEach(value => paragraphs.push(new Paragraph({ text: value, spacing: { after: 230 }, keepTogether: true })));
+    letter.paragraphs.forEach(value => paragraphs.push(new Paragraph({ text: value, spacing: { after: 280 }, keepTogether: true })));
     paragraphs.push(new Paragraph({ text: 'Yours sincerely,', spacing: { before: 180, after: 300 } }));
     paragraphs.push(new Paragraph({ children: [new TextRun({ text: profile.name, font: 'Georgia', size: 26 })] }));
+  } else if (compact) {
+    const content = onePageSections();
+    addHeader();
+    addSections(paragraphs, [content.lead]);
+    const left = [];
+    const right = [];
+    addSections(left, content.left);
+    addSections(right, content.right);
+    const noBorder = { style: BorderStyle.NONE };
+    paragraphs.push(new Table({
+      width: { size: 10006, type: WidthType.DXA }, columnWidths: [5900, 4106],
+      borders: { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder, insideHorizontal: noBorder, insideVertical: noBorder },
+      rows: [new TableRow({ children: [
+        new TableCell({ width: { size: 5900, type: WidthType.DXA }, margins: { left: 0, right: 220, top: 0, bottom: 0 }, children: left }),
+        new TableCell({ width: { size: 4106, type: WidthType.DXA }, margins: { left: 260, right: 0, top: 0, bottom: 0 },
+          borders: { left: { style: BorderStyle.SINGLE, color: 'CCD6DB', size: 5 } }, children: right }),
+      ] })],
+    }));
   } else {
-    resumePages(format).forEach((page, pageIndex) => {
+    resumePages().forEach((page, pageIndex) => {
       addHeader(pageIndex > 0);
-      page.forEach(s => {
-        paragraphs.push(heading(s.title));
-        s.items.forEach(item => {
-          if (item.type === 'text') paragraphs.push(normal(item.value));
-          if (item.type === 'skill') paragraphs.push(new Paragraph({ children: [new TextRun({ text: `${item.label}: `, bold: true }), new TextRun(item.value)], spacing: { after: spacing } }));
-          if (item.type === 'project') {
-            paragraphs.push(new Paragraph({ children: [new TextRun({ text: item.title, bold: true })], spacing: { before: 80, after: 30 }, keepNext: true }));
-            paragraphs.push(normal(item.description));
-          }
-          if (item.type === 'job') {
-            paragraphs.push(new Paragraph({ children: [new TextRun({ text: item.title, bold: true }), new TextRun({ text: `  |  ${item.period}`, color: '52616B', size: 16 })], spacing: { before: 70, after: 20 }, keepNext: true }));
-            paragraphs.push(new Paragraph({ children: [new TextRun({ text: item.company, bold: true, color, size: 17 })], spacing: { after: 35 }, keepNext: true }));
-            item.bullets.forEach(b => paragraphs.push(new Paragraph({ text: b, bullet: { level: 0 }, indent: { left: 280, hanging: 165 }, spacing: { after: compact ? 24 : 50 }, keepTogether: true })));
-          }
-        });
-      });
+      addSections(paragraphs, page);
     });
   }
   return new Document({
     creator: profile.name,
     title: format === 'letter' ? 'Cover Letter' : 'Resume',
-    styles: { default: { document: { run: { font: 'Calibri', size: format === 'letter' ? 21 : bodySize, color: '1D2D38' }, paragraph: { spacing: { line: compact ? 225 : 245 } } } } },
+    styles: { default: { document: { run: { font: 'Calibri', size: bodySize, color: '1D2D38' }, paragraph: { spacing: { line: format === 'letter' ? 305 : compact ? 255 : 285 } } } } },
     sections: [{ properties: { page: { size: { width: 11906, height: 16838 }, margin: { top: 850, right: 950, bottom: 820, left: 950 } } }, children: paragraphs }],
   });
 }

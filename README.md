@@ -18,7 +18,7 @@ Live at: https://aravin012.github.io
 - Fully responsive (mobile-first)
 - Accessible (ARIA roles, skip link, keyboard nav)
 - Print-friendly styles
-- Formal document studio: one-page resume, two-page resume, and customizable cover letter
+- Formal document studio: two-column one-page resume, detailed two-page resume, and customizable cover letter
 - A4 PDF printing and editable Word (.docx) downloads from the same content
 
 ## Local Development
