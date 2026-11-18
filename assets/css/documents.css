@@ -23,6 +23,21 @@ body { margin: 0; color: var(--ink); background: var(--workspace); font-family: 
 .format-option input { accent-color: var(--accent); margin-top: 3px; }
 .format-option strong, .format-option small { display: block; }
 .format-option small { margin-top: 3px; color: var(--muted); font-size: 11px; }
+.layout-options, .palette-options { border: 0; margin: 11px 0 20px; padding: 0; }
+.layout-options { display: grid; gap: 7px; }
+.layout-option { display: flex; gap: 9px; align-items: start; padding: 8px 10px; border: 1px solid var(--rule); cursor: pointer; font-size: 12px; }
+.layout-option:has(input:checked), .palette-option:has(input:checked) { border-color: var(--accent); background: #f0f5f7; }
+.layout-option input { accent-color: var(--accent); margin: 3px 0 0; }
+.layout-option strong, .layout-option small { display: block; }
+.layout-option small { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.palette-options { display: flex; gap: 6px; flex-wrap: wrap; }
+.palette-option { border: 1px solid var(--rule); display: flex; align-items: center; gap: 5px; padding: 7px; cursor: pointer; font-size: 11px; }
+.palette-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.palette-option:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.swatch { display: block; width: 13px; height: 13px; border-radius: 50%; background: var(--swatch); }
+.palette-navy { --swatch: #25536b; }
+.palette-sage { --swatch: #356f63; }
+.palette-graphite { --swatch: #44464c; }
 .letter-fields { border-top: 1px solid var(--rule); padding: 19px 0 4px; }
 .letter-fields[hidden] { display: none; }
 .letter-fields label { display: block; font-size: 12px; font-weight: 600; margin: 13px 0 5px; }
@@ -38,6 +53,10 @@ body { margin: 0; color: var(--ink); background: var(--workspace); font-family: 
 .export-note { margin: 14px 0 0; }
 .export-status { min-height: 14px; margin: 9px 0 0; }
 .preview { min-width: 0; }
+.mobile-preview-hint { display: none; }
+.preview[data-palette="sage"] { --accent: #356f63; --ink: #243b36; --muted: #536760; --rule: #c6d5ce; --tint: #edf3ef; }
+.preview[data-palette="graphite"] { --accent: #44464c; --ink: #24272d; --muted: #555b61; --rule: #cdd0d2; --tint: #f0f0ef; }
+.preview[data-palette="navy"] { --tint: #edf3f6; }
 .preview-caption { max-width: 210mm; margin: 1px auto 13px; display: flex; justify-content: space-between; }
 .paper { position: relative; width: 210mm; height: 297mm; padding: 15mm 17mm 14mm; margin: 0 auto 23px; background: var(--paper); box-shadow: 0 8px 35px #1d2d3825; overflow: hidden; font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 10.5pt; line-height: 1.4; }
 .paper * { box-sizing: border-box; }
@@ -70,6 +89,18 @@ body { margin: 0; color: var(--ink); background: var(--workspace); font-family: 
 .compact .one-page-columns .doc-section { margin-bottom: 13px; }
 .compact .one-page-columns .doc-row { margin-bottom: 10px; }
 .compact .one-page-columns .doc-list li { margin-bottom: 4px; }
+.preview[data-template="editorial"] .doc-name { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 300; letter-spacing: .06em; text-transform: uppercase; }
+.preview[data-template="editorial"] .doc-header { text-align: center; }
+.preview[data-template="editorial"] .doc-contact { justify-content: center; }
+.preview:is([data-template="editorial"], [data-template="executive"]) .one-page-columns { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+.preview:is([data-template="editorial"], [data-template="executive"]) .one-page-side { grid-column: 1; grid-row: 1; border-left: 0; border-right: 1px solid var(--rule); padding-left: 0; padding-right: 18px; }
+.preview:is([data-template="editorial"], [data-template="executive"]) .one-page-main { grid-column: 2; grid-row: 1; }
+.preview[data-template="editorial"] .paper:not(.one-page-paper) .doc-section { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; }
+.preview[data-template="editorial"] .paper:not(.one-page-paper) .doc-section h2 { border-bottom: 0; border-top: 1px solid var(--accent); padding-top: 6px; }
+.preview[data-template="executive"] .doc-header { background: var(--accent); margin: -15mm -17mm 12px; padding: 10mm 17mm 8mm; border: 0; text-align: center; }
+.preview[data-template="executive"] .doc-name, .preview[data-template="executive"] .doc-role, .preview[data-template="executive"] .doc-contact { color: #fff; }
+.preview[data-template="executive"] .doc-contact { justify-content: center; }
+.preview[data-template="executive"] .one-page-side { background: var(--tint); border-right: 0; box-shadow: inset -3px 0 var(--accent); padding: 8px 13px 3px 10px; }
 .doc-page-marker { position: absolute; left: 17mm; right: 17mm; bottom: 11mm; border-top: 1px solid var(--rule); padding-top: 7px; color: var(--muted); font-size: 8pt; }
 .paper:has(.letter-date) { font-size: 11pt; line-height: 1.5; }
 .letter-date { margin: 25px 0 20px; color: var(--muted); }
@@ -88,16 +119,18 @@ body { margin: 0; color: var(--ink); background: var(--workspace); font-family: 
   .workspace, .workspace-header { padding-left: 16px; padding-right: 16px; }
   .format-options { grid-template-columns: 1fr; }
   .preview { overflow-x: auto; }
+  .mobile-preview-hint { display: block; margin: 0 0 12px; color: var(--muted); font-size: 12px; }
   .paper { margin-left: 0; margin-right: 0; }
   .preview-caption { min-width: 210mm; }
 }
 @media print {
   @page { size: A4; margin: 0; }
   html, body { margin: 0; background: #fff; }
-  .workspace-header, .controls, .preview-caption { display: none !important; }
+  .workspace-header, .controls, .preview-caption, .mobile-preview-hint { display: none !important; }
   .workspace { display: block; max-width: none; padding: 0; margin: 0; }
   .preview { overflow: visible; }
   .paper { margin: 0; width: 210mm; height: 297mm; box-shadow: none; break-after: page; page-break-after: always; }
   .paper:last-child { break-after: auto; page-break-after: auto; }
-  .doc-contact a { color: var(--muted); }
+  .preview:not([data-template="executive"]) .doc-contact a { color: var(--muted); }
+  .preview[data-template="executive"] .doc-header, .preview[data-template="executive"] .one-page-side { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

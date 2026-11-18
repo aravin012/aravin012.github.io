@@ -74,6 +74,11 @@ const projects = [
 ];
 
 const education = 'B.E. Mechatronics, Robotics & Automation Engineering — SNS College of Technology, 2016';
+const palettes = {
+  navy: { accent: '25536B', ink: '1D2D38', muted: '52616B', rule: 'CCD6DB', tint: 'EDF3F6' },
+  sage: { accent: '356F63', ink: '243B36', muted: '536760', rule: 'C6D5CE', tint: 'EDF3EF' },
+  graphite: { accent: '44464C', ink: '24272D', muted: '555B61', rule: 'CDD0D2', tint: 'F0F0EF' },
+};
 
 function section(title, items) { return { title, items }; }
 function text(value) { return { type: 'text', value }; }
@@ -116,6 +121,7 @@ function resumePages() {
 }
 
 const preview = document.getElementById('document-preview');
+const previewArea = document.querySelector('.preview');
 const pageLabel = document.getElementById('page-label');
 const letterFields = document.getElementById('letter-fields');
 const status = document.getElementById('export-status');
@@ -124,8 +130,15 @@ const requested = params.get('format');
 if (['one', 'detailed', 'letter'].includes(requested)) {
   document.querySelector(`input[name="format"][value="${requested}"]`).checked = true;
 }
+for (const group of ['template', 'palette']) {
+  const selected = params.get(group);
+  const input = Array.from(document.querySelectorAll(`input[name="${group}"]`)).find(option => option.value === selected);
+  if (input) input.checked = true;
+}
 
 function currentFormat() { return document.querySelector('input[name="format"]:checked').value; }
+function currentTemplate() { return document.querySelector('input[name="template"]:checked').value; }
+function currentPalette() { return document.querySelector('input[name="palette"]:checked').value; }
 function escapeHtml(value) { return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]); }
 
 function header(continued = false) {
@@ -144,7 +157,7 @@ function renderItem(item) {
 }
 
 function renderSection(s) {
-  return `<section class="doc-section"><h2>${escapeHtml(s.title)}</h2>${s.items.map(renderItem).join('')}</section>`;
+  return `<section class="doc-section"><h2>${escapeHtml(s.title)}</h2><div class="doc-section-body">${s.items.map(renderItem).join('')}</div></section>`;
 }
 
 function letterContent() {
@@ -165,8 +178,12 @@ function letterContent() {
 
 function render() {
   const format = currentFormat();
+  const template = currentTemplate();
+  const palette = currentPalette();
+  previewArea.dataset.template = template;
+  previewArea.dataset.palette = palette;
   letterFields.hidden = format !== 'letter';
-  preview.classList.toggle('compact', format === 'one');
+  previewArea.classList.toggle('compact', format === 'one');
   status.textContent = '';
   if (format === 'letter') {
     const letter = letterContent();
@@ -178,7 +195,7 @@ function render() {
       <div class="letter-close">Yours sincerely,</div><div class="letter-signature">${escapeHtml(profile.name)}</div></article>`;
   } else if (format === 'one') {
     const content = onePageSections();
-    preview.innerHTML = `<article class="paper">${header()}${renderSection(content.lead)}
+    preview.innerHTML = `<article class="paper one-page-paper">${header()}${renderSection(content.lead)}
       <div class="one-page-columns"><div class="one-page-main">${content.left.map(renderSection).join('')}</div>
       <div class="one-page-side">${content.right.map(renderSection).join('')}</div></div></article>`;
   } else {
@@ -188,45 +205,73 @@ function render() {
       ${pages.length > 1 ? `<div class="doc-page-marker">${escapeHtml(profile.name)} · ${index + 1} / ${pages.length}</div>` : ''}</article>`).join('');
   }
   pageLabel.textContent = format === 'detailed' ? '01 / 02' : '01 / 01';
-  document.title = `${profile.name} | ${format === 'letter' ? 'Cover Letter' : format === 'one' ? 'One-page Resume' : 'Detailed Resume'}`;
+  document.title = `${profile.name} | ${format === 'letter' ? 'Cover Letter' : format === 'one' ? 'One-page Resume' : 'Detailed Resume'} | ${template} ${palette}`;
 }
 
-document.querySelectorAll('input[name="format"]').forEach(input => input.addEventListener('change', render));
+document.querySelectorAll('input[name="format"], input[name="template"], input[name="palette"]').forEach(input => input.addEventListener('change', render));
 letterFields.querySelectorAll('input').forEach(input => input.addEventListener('input', render));
 document.getElementById('pdf-button').addEventListener('click', () => window.print());
 
 function createWord() {
-  const { Document, Paragraph, TextRun, BorderStyle, Table, TableRow, TableCell, WidthType } = window.docx;
+  const { Document, Paragraph, TextRun, BorderStyle, Table, TableRow, TableCell, WidthType, ShadingType, AlignmentType } = window.docx;
   const format = currentFormat();
+  const template = currentTemplate();
+  const theme = palettes[currentPalette()];
   const compact = format === 'one';
+  const editorialDetail = template === 'editorial' && format === 'detailed';
   const bodySize = format === 'letter' ? 22 : compact ? 20 : 21;
-  const spacing = compact ? 70 : 95;
-  const color = '25536B';
+  const spacing = compact ? 70 : editorialDetail ? 65 : 95;
+  const color = theme.accent;
   const paragraphs = [];
   const normal = value => new Paragraph({ children: [new TextRun(value)], spacing: { after: spacing }, keepTogether: true });
   const heading = value => new Paragraph({ children: [new TextRun({ text: value.toUpperCase(), bold: true, color, size: 19 })],
-    spacing: { before: compact ? 140 : 180, after: 95 }, border: { bottom: { color: 'CCD6DB', style: BorderStyle.SINGLE, size: 5, space: 4 } }, keepNext: true });
+    spacing: { before: compact ? 140 : editorialDetail ? 110 : 180, after: editorialDetail ? 65 : 95 }, border: { bottom: { color: theme.rule, style: BorderStyle.SINGLE, size: 5, space: 4 } }, keepNext: true });
   const addHeader = (continued = false) => {
-    paragraphs.push(new Paragraph({ pageBreakBefore: continued, children: [new TextRun({ text: profile.name, font: 'Georgia', size: compact ? 44 : 48, color: '1D2D38' })], spacing: { after: 50 }, keepNext: true }));
-    paragraphs.push(new Paragraph({ children: [new TextRun({ text: profile.title + (continued ? ' · Continued' : ''), bold: true, color, size: 21 })], spacing: { after: 65 }, keepNext: true }));
-    paragraphs.push(new Paragraph({ children: [new TextRun({ text: `${profile.location}  |  ${profile.email}  |  ${profile.phone}`, color: '52616B', size: 17 })], spacing: { after: 35 }, keepNext: true }));
-    paragraphs.push(new Paragraph({ children: [new TextRun({ text: `${profile.linkedin}  |  ${profile.site}  |  ${profile.github}`, color: '52616B', size: 17 })], spacing: { after: compact ? 130 : 180 }, border: { bottom: { color, style: BorderStyle.SINGLE, size: 10, space: 8 } } }));
+    const band = template === 'executive';
+    const headerStyle = {
+      ...(band ? { shading: { type: ShadingType.CLEAR, fill: color } } : {}),
+      ...(template !== 'classic' ? { alignment: AlignmentType.CENTER } : {}),
+    };
+    const mainColor = band ? 'FFFFFF' : theme.ink;
+    const secondaryColor = band ? 'FFFFFF' : color;
+    const contactColor = band ? 'F1F5F5' : theme.muted;
+    paragraphs.push(new Paragraph({ ...headerStyle, pageBreakBefore: continued, children: [new TextRun({ text: template === 'editorial' ? profile.name.toUpperCase() : profile.name, font: template === 'editorial' ? 'Calibri' : 'Georgia', size: compact ? 44 : 48, color: mainColor })], spacing: { before: band ? 100 : 0, after: 50 }, keepNext: true }));
+    paragraphs.push(new Paragraph({ ...headerStyle, children: [new TextRun({ text: profile.title + (continued ? ' · Continued' : ''), bold: true, color: secondaryColor, size: 21 })], spacing: { after: 65 }, keepNext: true }));
+    paragraphs.push(new Paragraph({ ...headerStyle, children: [new TextRun({ text: `${profile.location}  |  ${profile.email}  |  ${profile.phone}`, color: contactColor, size: 17 })], spacing: { after: 35 }, keepNext: true }));
+    paragraphs.push(new Paragraph({ ...headerStyle, children: [new TextRun({ text: `${profile.linkedin}  |  ${profile.site}  |  ${profile.github}`, color: contactColor, size: 17 })], spacing: { after: compact ? 130 : 180 }, border: { bottom: { color, style: BorderStyle.SINGLE, size: 10, space: 8 } } }));
   };
-  const addSections = (target, sections) => sections.forEach(s => {
-    target.push(heading(s.title));
+  const itemParagraphs = s => {
+    const target = [];
     s.items.forEach(item => {
       if (item.type === 'text') target.push(normal(item.value));
       if (item.type === 'skill') target.push(new Paragraph({ children: [new TextRun({ text: `${item.label}: `, bold: true }), new TextRun(item.value)], spacing: { after: spacing } }));
       if (item.type === 'project') {
-        target.push(new Paragraph({ children: [new TextRun({ text: item.title, bold: true })], spacing: { before: 100, after: 40 }, keepNext: true }));
+        target.push(new Paragraph({ children: [new TextRun({ text: item.title, bold: true })], spacing: { before: editorialDetail ? 65 : 100, after: 40 }, keepNext: true }));
         target.push(normal(item.description));
       }
       if (item.type === 'job') {
-        target.push(new Paragraph({ children: [new TextRun({ text: item.title, bold: true }), new TextRun({ text: `  |  ${item.period}`, color: '52616B', size: 17 })], spacing: { before: 90, after: 25 }, keepNext: true }));
+        target.push(new Paragraph({ children: [new TextRun({ text: item.title, bold: true }), new TextRun({ text: `  |  ${item.period}`, color: theme.muted, size: 17 })], spacing: { before: editorialDetail ? 60 : 90, after: 25 }, keepNext: true }));
         target.push(new Paragraph({ children: [new TextRun({ text: item.company, bold: true, color, size: 18 })], spacing: { after: 45 }, keepNext: true }));
-        item.bullets.forEach(b => target.push(new Paragraph({ text: b, bullet: { level: 0 }, indent: { left: 290, hanging: 170 }, spacing: { after: compact ? 55 : 75 }, keepTogether: true })));
+        item.bullets.forEach(b => target.push(new Paragraph({ text: b, bullet: { level: 0 }, indent: { left: 290, hanging: 170 }, spacing: { after: compact ? 55 : editorialDetail ? 50 : 75 }, keepTogether: true })));
       }
     });
+    return target;
+  };
+  const addSections = (target, sections) => sections.forEach(s => {
+    if (template === 'editorial' && !compact) {
+      const noBorder = { style: BorderStyle.NONE };
+      target.push(new Table({
+        width: { size: 10006, type: WidthType.DXA }, columnWidths: [1850, 8156],
+        borders: { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder, insideHorizontal: noBorder, insideVertical: noBorder },
+        rows: [new TableRow({ children: [
+          new TableCell({ width: { size: 1850, type: WidthType.DXA }, margins: { left: 0, right: 170, top: 0, bottom: 0 }, children: [heading(s.title)] }),
+          new TableCell({ width: { size: 8156, type: WidthType.DXA }, margins: { left: 160, right: 0, top: 0, bottom: 0 }, children: itemParagraphs(s) }),
+        ] })],
+      }));
+      target.push(new Paragraph({ spacing: { after: 20 }, children: [new TextRun({ text: '', size: 2 })] }));
+    } else {
+      target.push(heading(s.title), ...itemParagraphs(s));
+    }
   });
 
   if (format === 'letter') {
@@ -249,13 +294,18 @@ function createWord() {
     addSections(left, content.left);
     addSections(right, content.right);
     const noBorder = { style: BorderStyle.NONE };
+    const sidebarFirst = template !== 'classic';
+    const sidebarCell = new TableCell({ width: { size: 4106, type: WidthType.DXA }, margins: { left: 0, right: 220, top: 0, bottom: 0 },
+      ...(template === 'executive' ? { shading: { type: ShadingType.CLEAR, fill: theme.tint } } : {}),
+      borders: { right: { style: BorderStyle.SINGLE, color: template === 'executive' ? color : theme.rule, size: 5 } }, children: right });
+    const mainCell = new TableCell({ width: { size: 5900, type: WidthType.DXA }, margins: { left: 250, right: 0, top: 0, bottom: 0 }, children: left });
     paragraphs.push(new Table({
-      width: { size: 10006, type: WidthType.DXA }, columnWidths: [5900, 4106],
+      width: { size: 10006, type: WidthType.DXA }, columnWidths: sidebarFirst ? [4106, 5900] : [5900, 4106],
       borders: { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder, insideHorizontal: noBorder, insideVertical: noBorder },
-      rows: [new TableRow({ children: [
+      rows: [new TableRow({ children: sidebarFirst ? [sidebarCell, mainCell] : [
         new TableCell({ width: { size: 5900, type: WidthType.DXA }, margins: { left: 0, right: 220, top: 0, bottom: 0 }, children: left }),
         new TableCell({ width: { size: 4106, type: WidthType.DXA }, margins: { left: 260, right: 0, top: 0, bottom: 0 },
-          borders: { left: { style: BorderStyle.SINGLE, color: 'CCD6DB', size: 5 } }, children: right }),
+          borders: { left: { style: BorderStyle.SINGLE, color: theme.rule, size: 5 } }, children: right }),
       ] })],
     }));
   } else {
@@ -267,7 +317,7 @@ function createWord() {
   return new Document({
     creator: profile.name,
     title: format === 'letter' ? 'Cover Letter' : 'Resume',
-    styles: { default: { document: { run: { font: 'Calibri', size: bodySize, color: '1D2D38' }, paragraph: { spacing: { line: format === 'letter' ? 305 : compact ? 255 : 285 } } } } },
+    styles: { default: { document: { run: { font: 'Calibri', size: bodySize, color: theme.ink }, paragraph: { spacing: { line: format === 'letter' ? 305 : compact ? 255 : editorialDetail ? 265 : 285 } } } } },
     sections: [{ properties: { page: { size: { width: 11906, height: 16838 }, margin: { top: 850, right: 950, bottom: 820, left: 950 } } }, children: paragraphs }],
   });
 }
@@ -292,7 +342,7 @@ document.getElementById('word-button').addEventListener('click', async event => 
     const link = document.createElement('a');
     const suffix = { one: 'One-Page-Resume', detailed: 'Detailed-Resume', letter: 'Cover-Letter' }[currentFormat()];
     link.href = url;
-    link.download = `Aravindan-Pathirasamy-${suffix}.docx`;
+    link.download = `Aravindan-Pathirasamy-${suffix}-${currentTemplate()}-${currentPalette()}.docx`;
     document.body.append(link);
     link.click();
     link.remove();

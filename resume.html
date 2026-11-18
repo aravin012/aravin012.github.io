@@ -16,7 +16,7 @@
     <div>
       <span class="eyebrow">Document studio</span>
       <h1>Resume &amp; cover letter</h1>
-      <p>Choose a format, review the page, then export a clean, editable document.</p>
+      <p>Choose a document, layout, and color. The preview matches your PDF and editable Word export.</p>
     </div>
   </header>
 
@@ -30,8 +30,24 @@
         <label class="format-option"><input type="radio" name="format" value="letter" /><span><strong>Cover letter</strong><small>Tailor it to an opportunity</small></span></label>
       </fieldset>
 
+      <div class="control-heading">02 / Layout</div>
+      <fieldset class="layout-options">
+        <legend class="sr-only">Resume layout</legend>
+        <label class="layout-option"><input type="radio" name="template" value="classic" checked /><span><strong>Classic</strong><small>Balanced, understated</small></span></label>
+        <label class="layout-option"><input type="radio" name="template" value="editorial" /><span><strong>Editorial</strong><small>Sidebar &amp; generous type</small></span></label>
+        <label class="layout-option"><input type="radio" name="template" value="executive" /><span><strong>Executive</strong><small>Signature header</small></span></label>
+      </fieldset>
+
+      <div class="control-heading">03 / Color</div>
+      <fieldset class="palette-options">
+        <legend class="sr-only">Color palette</legend>
+        <label class="palette-option palette-navy"><input type="radio" name="palette" value="navy" checked /><span class="swatch" aria-hidden="true"></span><span>Navy</span></label>
+        <label class="palette-option palette-sage"><input type="radio" name="palette" value="sage" /><span class="swatch" aria-hidden="true"></span><span>Sage</span></label>
+        <label class="palette-option palette-graphite"><input type="radio" name="palette" value="graphite" /><span class="swatch" aria-hidden="true"></span><span>Graphite</span></label>
+      </fieldset>
+
       <div id="letter-fields" class="letter-fields" hidden>
-        <div class="control-heading">02 / Personalize</div>
+        <div class="control-heading">04 / Personalize</div>
         <label for="recipient">Recipient</label>
         <input id="recipient" type="text" maxlength="80" placeholder="Hiring Manager" autocomplete="off" />
         <label for="company">Company</label>
@@ -51,6 +67,7 @@
 
     <section class="preview" aria-label="Document preview">
       <div class="preview-caption"><span>LIVE PREVIEW</span><span id="page-label">01 / 01</span></div>
+      <p class="mobile-preview-hint">Swipe horizontally to inspect the full A4 page.</p>
       <div id="document-preview"></div>
     </section>
   </main>

@@ -24,7 +24,7 @@ Live at: https://aravin012.github.io
 ## Local Development
 Just open `index.html` in a browser — no build step required.
 
-Open `resume.html` to select a document. Enter a recipient, company, and role for the cover letter, then use **Print / Save as PDF** (A4, browser headers/footers off) or **Download Word**. Word generation loads the `docx` and `JSZip` browser libraries from jsDelivr, so an internet connection is required for DOCX export.
+Open `resume.html` to select a document, one of three curated layouts (Classic, Editorial, Executive), and a palette (Navy, Sage, Graphite). Layout and color choices apply to both PDF and Word. Enter a recipient, company, and role for the cover letter, then use **Print / Save as PDF** (A4, browser headers/footers off) or **Download Word**. Word generation loads the `docx` and `JSZip` browser libraries from jsDelivr, so an internet connection is required for DOCX export.
 
 To check document pagination and Word output, run `python verify_exports.py` with Playwright, pypdf, and python-docx installed. The check also measures Word page counts when Microsoft Word automation is available on Windows.
 
